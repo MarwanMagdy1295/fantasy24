@@ -1,0 +1,58 @@
+{
+  "general": {
+    "app_name": "Next Match"
+  },
+  "signup_screen": {
+    "signup": "Sign Up",
+    "signup_title": "Create a free account",
+    "signup_sub_title": "AI tools, designed to enhance your game, optimize your score, and dominate your mini-leagues.",
+    "signin": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "Repeat_password": "Repeat Password"
+  },
+  "signin_screen": {
+    "signin": "Sign In",
+    "signin_title": "SIGN IN TO NEXT MATCH",
+    "signin_sub_title": "Welcome back to Next Match",
+    "forgot_password": "Forgot password?",
+    "email": "Email",
+    "password": "Password"
+  },
+  "forget_password_screen": {
+    "forget_password": "Forget Password",
+    "forget_password_title": "FORGET PASSWORD?",
+    "forget_password_sub_title": "Type your email down below and we will send you an email to reset your password.",
+    "send_email": "Send email",
+    "email": "Email",
+    "recalled_your_password": "Recalled your password?",
+    "signin": "Sign in"
+  },
+  "otp_screen": {
+    "verify": "Verify",
+    "otp_screen_title": "WE SENT YOU AN EMAIL",
+    "otp_screen_sub_title": "Check the code in your email and type it below."
+  },
+  "reset_password_screen": {
+    "reset_password": "Reset Password",
+    "reset_password_screen_title": "REST YOUR PASSWORD",
+    "reset_password_screen_sub_title": "Type your new password.",
+    "new_password": "New Password",
+    "Repeat_password": "Repeat Password",
+    "change_password": "Change Password"
+  },
+  "premiere_league_id_screen": {
+    "premiere_league_id": "Your premiere league ID",
+    "premiere_league_id_screen_title": "UNLOCK AI FEATURES BY ADDING YOUR FPL ID",
+    "premiere_league_id_screen_sub_title": "By adding your FPL ID you'll be able to access all of our later AI Model features.",
+    "FPL_ID": "FBL ID",
+    "Paste_or_input": "Paste or input ID here",
+    "my_id": "This is my ID",
+    "add_later": "I'll add later in my account"
+  },
+  "ai_transfer_screen": {
+    "make_transfer" : "Make Transfer",
+    "reject_transfer" : "Reject transfer",
+    "more_transfers" : "More transfers"
+  }
+}
