@@ -55,17 +55,21 @@ class _PointsPredectionState extends State<PointsPredection> {
               final cubit = context.watch<PointPredictionCubit>();
               return Container(
                 color: AppColors.background,
-                child: SingleChildScrollView(
-                  controller: cubit.verticalController,
-                  child: cubit.isLoading
-                      ? const LoadingWidget()
-                      : RefreshIndicator(
-                          onRefresh: () async {
-                            await cubit.getPointPredictionList(pageNumber: 1);
-                            return;
-                          },
-                          child: Column(
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    await cubit.getPointPredictionList(pageNumber: 1);
+                    return;
+                  },
+                  child: SingleChildScrollView(
+                    controller: cubit.verticalController,
+                    child: cubit.isLoading
+                        ? const Center(child: LoadingWidget())
+                        : Column(
                             children: [
+                              Constatnts.height16,
+                              ...cubit.predictionPointsList!.map(
+                                (e) => const PlayerPredictedPointCard(),
+                              ),
                               // Constatnts.height10,
                               // ListTile(
                               //   contentPadding: EdgeInsets.zero,
@@ -157,11 +161,9 @@ class _PointsPredectionState extends State<PointsPredection> {
                               //     ],
                               //   ),
                               // ),
-                              Constatnts.height16,
-                              const PlayerPredictedPointCard(),
                             ],
                           ),
-                        ),
+                  ),
                 ),
               );
             },

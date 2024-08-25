@@ -71,7 +71,7 @@ class NetworkService {
     if (token != null && token) {
       return Options(
         headers: {
-          'Authorization': 'Bearer ${di<PrefsService>().user}',
+          'Authorization': 'Bearer ${di<PrefsService>().user.get()}',
           'lang': _prefsService.locale.get(),
         },
       );

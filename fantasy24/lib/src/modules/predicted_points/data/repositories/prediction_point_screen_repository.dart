@@ -3,25 +3,34 @@ import 'package:next_match/src/modules/predicted_points/data/model/point_predict
 
 abstract class PointPredictionScreenRepositoryInterface {
   Future<PointPredictionModel?> predictionPointList(
-      {int? pageNumber, int? pageSize, String? sort, String? sortOrder});
+      {int? pageNumber = 1,
+      int? pageSize = 10,
+      String? sort = 'id',
+      String? sortOrder = 'ASC'});
 }
 
 class PointPredictionScreenRepository
     extends PointPredictionScreenRepositoryInterface {
-  final PointPredictionScreenRemoteDataSource _loginRemoteDataSource;
+  final PointPredictionScreenRemoteDataSource
+      _pointPredictionScreenRemoteDataSource;
 
   PointPredictionScreenRepository({
-    required PointPredictionScreenRemoteDataSource loginScreenRemoteDataSource,
-  }) : _loginRemoteDataSource = loginScreenRemoteDataSource;
+    required PointPredictionScreenRemoteDataSource
+        pointPredictionScreenRemoteDataSource,
+  }) : _pointPredictionScreenRemoteDataSource =
+            pointPredictionScreenRemoteDataSource;
 
   @override
   Future<PointPredictionModel?> predictionPointList(
-      {int? pageNumber, int? pageSize, String? sort, String? sortOrder}) {
-    return _loginRemoteDataSource.predictionPointList(
-      pageNumber: pageNumber,
-      pageSize: pageSize,
-      sort: sort,
-      sortOrder: sortOrder,
+      {int? pageNumber = 1,
+      int? pageSize = 10,
+      String? sort = 'id',
+      String? sortOrder = 'ASC'}) {
+    return _pointPredictionScreenRemoteDataSource.predictionPointList(
+      pageNumber: pageNumber!,
+      pageSize: pageSize!,
+      sort: sort!,
+      sortOrder: sortOrder!,
     );
   }
 }

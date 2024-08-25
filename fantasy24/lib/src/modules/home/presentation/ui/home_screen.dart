@@ -39,98 +39,121 @@ class _HomeScreenState extends State<HomeScreen>
           lazy: true,
           child: Builder(builder: (context) {
             final cubit = context.watch<HomeScreenCubit>();
-            return NestedScrollView(
-              physics: const BouncingScrollPhysics(),
-              headerSliverBuilder:
-                  (BuildContext context, bool innerBoxIsScrolled) {
-                return <Widget>[
-                  SliverToBoxAdapter(
-                    child: ListTile(
-                      contentPadding: EdgeInsets.only(
-                        left: 16.0.w,
-                        right: 16.0.w,
-                        top: 16.0.h,
-                      ),
-                      // leading: const Icon(
-                      //   Icons.arrow_back,
-                      //   color: AppColors.appBlack,
-                      // ),
-                      title: Text(
-                        cubit.screenTitle,
-                        style: AppTheme.textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      trailing: const Icon(
-                        Icons.notifications_none_outlined,
-                        color: AppColors.appBlack,
-                      ),
+            return
+                //  NestedScrollView(
+                //   physics: const NeverScrollableScrollPhysics(),
+                //   headerSliverBuilder:
+                //       (BuildContext context, bool innerBoxIsScrolled) {
+                //     return <Widget>[
+                //       SliverToBoxAdapter(
+                //         child: ListTile(
+                //           contentPadding: EdgeInsets.only(
+                //             left: 16.0.w,
+                //             right: 16.0.w,
+                //             top: 16.0.h,
+                //           ),
+                //           // leading: const Icon(
+                //           //   Icons.arrow_back,
+                //           //   color: AppColors.appBlack,
+                //           // ),
+                //           title: Text(
+                //             cubit.screenTitle,
+                //             style: AppTheme.textTheme.headlineMedium?.copyWith(
+                //               fontWeight: FontWeight.w500,
+                //             ),
+                //           ),
+                //           trailing: const Icon(
+                //             Icons.notifications_none_outlined,
+                //             color: AppColors.appBlack,
+                //           ),
+                //         ),
+                //       ),
+                //     ];
+                //   },
+                //   body:
+                Column(
+              children: [
+                ListTile(
+                  contentPadding: EdgeInsets.only(
+                    left: 16.0.w,
+                    right: 16.0.w,
+                    top: 16.0.h,
+                  ),
+                  // leading: const Icon(
+                  //   Icons.arrow_back,
+                  //   color: AppColors.appBlack,
+                  // ),
+                  title: Text(
+                    cubit.screenTitle,
+                    style: AppTheme.textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                ];
-              },
-              body: Column(
-                children: [
-                  TabBar(
+                  trailing: const Icon(
+                    Icons.notifications_none_outlined,
+                    color: AppColors.appBlack,
+                  ),
+                ),
+                TabBar(
+                  controller: tabController,
+                  isScrollable: true,
+                  indicatorColor: AppColors.transparent,
+                  dividerColor: AppColors.transparent,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicator: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50.0.r),
+                    color: AppColors.appBlack,
+                  ),
+                  tabAlignment: TabAlignment.start,
+                  padding: EdgeInsets.symmetric(horizontal: 16.0.w),
+                  indicatorPadding: EdgeInsets.symmetric(vertical: 4.0.h),
+                  overlayColor:
+                      const MaterialStatePropertyAll(AppColors.transparent),
+                  unselectedLabelColor: AppColors.appBlack,
+                  labelStyle: AppTheme.textTheme.titleLarge?.copyWith(
+                    color: AppColors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  tabs: const [
+                    Tab(
+                      icon: Text(
+                        'My Team',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Tab(
+                      icon: Text(
+                        'Points predictions',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Tab(
+                      icon: Text(
+                        'AI Team',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Tab(
+                      icon: Text(
+                        'AI Transfare',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: TabBarView(
                     controller: tabController,
-                    isScrollable: true,
-                    indicatorColor: AppColors.transparent,
-                    dividerColor: AppColors.transparent,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50.0.r),
-                      color: AppColors.appBlack,
-                    ),
-                    tabAlignment: TabAlignment.start,
-                    padding: EdgeInsets.symmetric(horizontal: 16.0.w),
-                    indicatorPadding: EdgeInsets.symmetric(vertical: 4.0.h),
-                    overlayColor:
-                        const MaterialStatePropertyAll(AppColors.transparent),
-                    unselectedLabelColor: AppColors.appBlack,
-                    labelStyle: AppTheme.textTheme.titleLarge?.copyWith(
-                      color: AppColors.white,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    tabs: const [
-                      Tab(
-                        icon: Text(
-                          'My Team',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Tab(
-                        icon: Text(
-                          'Points predictions',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Tab(
-                        icon: Text(
-                          'AI Team',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Tab(
-                        icon: Text(
-                          'AI Transfare',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                    children: const [
+                      MyTeamScreen(),
+                      PointsPredection(),
+                      AiTeamScreen(),
+                      AiTransfer(),
                     ],
                   ),
-                  Expanded(
-                    child: TabBarView(
-                      controller: tabController,
-                      children: const [
-                        MyTeamScreen(),
-                        PointsPredection(),
-                        AiTeamScreen(),
-                        AiTransfer(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
+              // ),
             );
           }),
         ),

@@ -19,6 +19,9 @@ import 'package:next_match/src/modules/auth/reset_password/presentation/controll
 import 'package:next_match/src/modules/auth/signup/data/data_source/signup_screen_remote_data_source.dart';
 import 'package:next_match/src/modules/auth/signup/data/repositories/signup_screen_repository.dart';
 import 'package:next_match/src/modules/auth/signup/presentation/controller/cubit/signup_screen_cubit.dart';
+import 'package:next_match/src/modules/predicted_points/data/data_source/prediction_point_screen_remote_data_source.dart';
+import 'package:next_match/src/modules/predicted_points/data/repositories/prediction_point_screen_repository.dart';
+import 'package:next_match/src/modules/predicted_points/presentation/controller/cubit/point_prediction_cubit.dart';
 
 final di = GetIt.instance;
 
@@ -151,6 +154,23 @@ class DiService {
     di.registerLazySingleton(
       () => ResetPasswordScreenCubit(
         resetPasswordScreenRepository: di(),
+      ),
+    );
+
+    // pointPredictionScreen
+    di.registerLazySingleton(
+      () => PointPredictionScreenRemoteDataSource(
+        networkService: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => PointPredictionScreenRepository(
+        pointPredictionScreenRemoteDataSource: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => PointPredictionCubit(
+        pointPredictionScreenRepository: di(),
       ),
     );
   }

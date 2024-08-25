@@ -24,10 +24,11 @@ class PointPredictionCubit extends BaseCubit<PointPredictionState>
 
   Future<void> getPointPredictionList(
       {required int pageNumber,
-      int? pageSize,
-      String? sort,
-      String? sortOrder}) async {
-    verticalController!.addListener(() async {
+      int? pageSize = 10,
+      String? sort = 'id',
+      String? sortOrder = 'ASC'}) async {
+    verticalController = ScrollController();
+    verticalController?.addListener(() async {
       if (verticalController!.position.maxScrollExtent ==
           verticalController!.position.pixels) {
         if (pageNumber < pointPredictionModel!.totalPages!) {
@@ -37,7 +38,7 @@ class PointPredictionCubit extends BaseCubit<PointPredictionState>
           await _pointPredictionScreenRepository
               .predictionPointList(
                   pageNumber: pageNumber,
-                  pageSize: pageSize,
+                  pageSize: pageSize!,
                   sort: sort,
                   sortOrder: sortOrder)
               .then((value) {
@@ -52,26 +53,27 @@ class PointPredictionCubit extends BaseCubit<PointPredictionState>
             log('point prediction error=>  $onError');
           });
         }
-      } else {
-        isLoading = true;
-        emit(PointPredictionLoading());
-        await _pointPredictionScreenRepository
-            .predictionPointList(
-                pageNumber: pageNumber,
-                pageSize: pageSize,
-                sort: sort,
-                sortOrder: sortOrder)
-            .then((value) {
-          pointPredictionModel = value;
-          predictionPointsList = pointPredictionModel?.predictionPointList;
-          isLoading = false;
-          emit(PointPredictionLoading());
-        }).catchError((onError) {
-          isLoading = false;
-          emit(PointPredictionLoading());
-          log('point prediction error=>  $onError');
-        });
       }
     });
+    if (pointPredictionModel == null) {
+      isLoading = true;
+      emit(PointPredictionLoading());
+      await _pointPredictionScreenRepository
+          .predictionPointList(
+              pageNumber: pageNumber,
+              pageSize: pageSize,
+              sort: sort,
+              sortOrder: sortOrder)
+          .then((value) {
+        pointPredictionModel = value;
+        predictionPointsList = pointPredictionModel?.predictionPointList;
+        isLoading = false;
+        emit(PointPredictionLoading());
+      }).catchError((onError) {
+        isLoading = false;
+        emit(PointPredictionLoading());
+        log('point prediction error=>  $onError');
+      });
+    }
   }
 }
