@@ -57,112 +57,180 @@ class FindPremiereLeagueIdScreen extends StatelessWidget {
                   ],
                 ),
                 Constatnts.height40,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '1. ',
+                GestureDetector(
+                  onTap: () async {
+                    try {
+                      await launchUrl(
+                          Uri.parse('https://fantasy.premierleague.com'));
+                    } catch (e) {}
+                  },
+                  child: Text.rich(
+                    TextSpan(
+                      text:
+                          '1. ${find_premiere_league_id_screen.step_one.tr()}',
                       style: AppTheme.textTheme.titleLarge!.copyWith(),
-                    ),
-                    Constatnts.width4,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Log in to your FPL account at the official',
-                          style: AppTheme.textTheme.titleLarge!.copyWith(),
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            try {
-                              await launchUrl(Uri.parse(
-                                  'https://fantasy.premierleague.com'));
-                              // ignore: empty_catches
-                            } catch (e) {}
-                          },
-                          child: Text(
-                            ' Fantasy Premier League website.',
-                            style: AppTheme.textTheme.titleLarge!.copyWith(
-                              color: AppColors.primary,
-                            ),
+                        TextSpan(
+                          text: find_premiere_league_id_screen.step_one2.tr(),
+                          style: AppTheme.textTheme.titleLarge!.copyWith(
+                            color: AppColors.primary,
                           ),
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
+                // Text(
+                //   '1. ${find_premiere_league_id_screen.step_one.tr()}',
+                //   style: AppTheme.textTheme.titleLarge!.copyWith(),
+                // ),
+                // GestureDetector(
+                //   onTap: () async {
+                //     try {
+                //       await launchUrl(
+                //           Uri.parse('https://fantasy.premierleague.com'));
+                //     } catch (e) {}
+                //   },
+                //   child: Text(
+                //     find_premiere_league_id_screen.step_one2.tr(),
+                //     style: AppTheme.textTheme.titleLarge!.copyWith(
+                //       color: AppColors.primary,
+                //     ),
+                //   ),
+                // ),
                 Constatnts.height24,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Wrap(
                   children: [
                     Text(
-                      '2. ',
+                      '2. ${find_premiere_league_id_screen.step_two.tr()}',
                       style: AppTheme.textTheme.titleLarge!.copyWith(),
-                    ),
-                    Constatnts.width4,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Navigate to the "Pick Team" tab.',
-                          style: AppTheme.textTheme.titleLarge!.copyWith(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Constatnts.height24,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '3. ',
-                      style: AppTheme.textTheme.titleLarge!.copyWith(),
-                    ),
-                    Constatnts.width4,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Click on the "Gameweek History"',
-                          style: AppTheme.textTheme.titleLarge!.copyWith(),
-                        ),
-                        Text(
-                          'link located on the right side.',
-                          style: AppTheme.textTheme.titleLarge!.copyWith(),
-                        ),
-                      ],
                     ),
                   ],
                 ),
                 Constatnts.height24,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Wrap(
                   children: [
                     Text(
-                      '4. ',
+                      '3. ${find_premiere_league_id_screen.step_three.tr()}',
                       style: AppTheme.textTheme.titleLarge!.copyWith(),
-                    ),
-                    Constatnts.width4,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'The URL in your browser\'s address bar',
-                          style: AppTheme.textTheme.titleLarge!.copyWith(),
-                        ),
-                        Text(
-                          'will contain your FPL ID.',
-                          style: AppTheme.textTheme.titleLarge!.copyWith(),
-                        ),
-                        Text(
-                          '  It is the number in the URL after /entry/.',
-                          style: AppTheme.textTheme.titleLarge!.copyWith(),
-                        ),
-                      ],
                     ),
                   ],
                 ),
+                Constatnts.height24,
+                Wrap(
+                  children: [
+                    Text(
+                      '4. ${find_premiere_league_id_screen.step_four.tr()}',
+                      style: AppTheme.textTheme.titleLarge!.copyWith(),
+                    ),
+                  ],
+                ),
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       '1. ',
+                //       style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //     ),
+                //     Constatnts.width4,
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Text(
+                //           'Log in to your FPL account at the official',
+                //           style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //         ),
+                //         GestureDetector(
+                //           onTap: () async {
+                //             try {
+                //               await launchUrl(Uri.parse(
+                //                   'https://fantasy.premierleague.com'));
+                //               // ignore: empty_catches
+                //             } catch (e) {}
+                //           },
+                //           child: Text(
+                //             ' Fantasy Premier League website.',
+                //             style: AppTheme.textTheme.titleLarge!.copyWith(
+                //               color: AppColors.primary,
+                //             ),
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
+                Constatnts.height24,
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       '2. ',
+                //       style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //     ),
+                //     Constatnts.width4,
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Text(
+                //           'Navigate to the "Pick Team" tab.',
+                //           style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
+                // Constatnts.height24,
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       '3. ',
+                //       style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //     ),
+                //     Constatnts.width4,
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Text(
+                //           'Click on the "Gameweek History"',
+                //           style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //         ),
+                //         Text(
+                //           'link located on the right side.',
+                //           style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
+                // Constatnts.height24,
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       '4. ',
+                //       style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //     ),
+                //     Constatnts.width4,
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Text(
+                //           'The URL in your browser\'s address bar',
+                //           style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //         ),
+                //         Text(
+                //           'will contain your FPL ID.',
+                //           style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //         ),
+                //         Text(
+                //           '  It is the number in the URL after /entry/.',
+                //           style: AppTheme.textTheme.titleLarge!.copyWith(),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
                 Constatnts.height20,
                 Assets.images.fplId.image(),
               ],

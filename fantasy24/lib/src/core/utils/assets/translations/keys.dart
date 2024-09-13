@@ -77,6 +77,11 @@ class premiere_league_id_screen {
 class find_premiere_league_id_screen {
   static const String your_premiere_league_iD = "find_premiere_league_id_screen.your_premiere_league_iD";
   static const String unlock_ai_features = "find_premiere_league_id_screen.unlock_ai_features";
+  static const String step_one = "find_premiere_league_id_screen.step_one";
+  static const String step_one2 = "find_premiere_league_id_screen.step_one2";
+  static const String step_two = "find_premiere_league_id_screen.step_two";
+  static const String step_three = "find_premiere_league_id_screen.step_three";
+  static const String step_four = "find_premiere_league_id_screen.step_four";
 }
 
 class home_screen {

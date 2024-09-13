@@ -67,7 +67,12 @@
   },
   "find_premiere_league_id_screen": {
     "your_premiere_league_iD": "Your premiere league ID",
-    "unlock_ai_features": "UNLOCK AI FEATURES BY ADDING YOUR FPL ID"
+    "unlock_ai_features": "UNLOCK AI FEATURES BY ADDING YOUR FPL ID",
+    "step_one": "Log in to your FPL account at the official ",
+    "step_one2": "Fantasy Premier League website.",
+    "step_two": "Navigate to the \"Pick Team\"tab.",
+    "step_three": "Click on the \"Gameweek History\" link located on the right side.",
+    "step_four": "The URL in your browser's address bar will contain your FPL ID. It is the number in the URL after /entry/."
   },
   "home_screen": {
     "home_screen_title": "Home",
