@@ -118,12 +118,13 @@ class ForgetPassword extends StatelessWidget {
                           color: AppColors.white,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter Your Email';
-                            } else if (RegExp(
-                                    r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                                .hasMatch(value)) {
-                              return 'Please Enter A Valid Email';
+                              return signin_screen.please_enter_your_email.tr();
                             }
+                            // else if (RegExp(
+                            //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+                            //     .hasMatch(value)) {
+                            //   return 'Please Enter A Valid Email';
+                            // }
                             return null;
                           },
                         ),
@@ -139,7 +140,8 @@ class ForgetPassword extends StatelessWidget {
                                 titleStyle:
                                     AppTheme.textTheme.displayMedium?.copyWith(
                                   color: AppColors.white,
-                                  fontSize: 16.0.sp,
+                                  fontSize: 14.0.sp,
+                                  fontWeight: FontWeight.w500,
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0.r),
@@ -157,24 +159,24 @@ class ForgetPassword extends StatelessWidget {
                               ),
                         Constatnts.height24,
                         Constatnts.height2,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              forget_password_screen.recalled_your_password
-                                  .tr(),
-                              style: AppTheme.textTheme.titleLarge!.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.paragraph),
-                            ),
-                            Text(
-                              ' ${forget_password_screen.signin.tr()}',
-                              style: AppTheme.textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     Text(
+                        //       forget_password_screen.recalled_your_password
+                        //           .tr(),
+                        //       style: AppTheme.textTheme.titleLarge!.copyWith(
+                        //           fontWeight: FontWeight.w500,
+                        //           color: AppColors.paragraph),
+                        //     ),
+                        //     Text(
+                        //       ' ${forget_password_screen.signin.tr()}',
+                        //       style: AppTheme.textTheme.titleLarge!.copyWith(
+                        //         fontWeight: FontWeight.w500,
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
                   ),

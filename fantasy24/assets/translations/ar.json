@@ -3,52 +3,99 @@
     "app_name": "Next Match"
   },
   "signup_screen": {
-    "signup": "Sign Up",
-    "signup_title": "Create a free account",
-    "signup_sub_title": "AI tools, designed to enhance your game, optimize your score, and dominate your mini-leagues.",
-    "signin": "Sign In",
-    "email": "Email",
-    "password": "Password",
-    "Repeat_password": "Repeat Password"
+    "signup": "انشاء حساب",
+    "signup_title": "أنشئ حسابا مجانيا",
+    "signup_sub_title": "أدوات الذكاء الاصطناعي المصممة لتعزيز لعبتك، وتحسين درجتك، والهيمنة على دوري ميني الخاص بك.",
+    "signin": "تسجيل الدخول",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
+    "Repeat_password": "تأكيد كلمة المرور",
+    "please_enter_your_email": "من فضلك أدخل البريد الالكتروني",
+    "please_enter_your_password": "من فضلك أدخل كلمة المرور",
+    "password_validation": "كلمة المرور يجب ان تكون ٨ حروف او اكثر",
+    "password_not_match": "كلمة المرور غير متطابقة"
   },
   "signin_screen": {
-    "signin": "Sign In",
-    "signin_title": "Sign in to next match",
-    "signin_sub_title": "Welcome back to Next Match",
-    "forgot_password": "Forgot password?",
-    "email": "Email",
-    "password": "Password"
+    "signin": "تسجيل الدخول",
+    "signup": "انشاء حساب",
+    "signin_title": "تسجيل الدخول ",
+    "signin_sub_title": "أهلا بعودتك 👋",
+    "forgot_password": "نسيت كلمة المرور؟",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
+    "please_enter_your_email": "من فضلك أدخل البريد الالكتروني",
+    "please_enter_your_password": "من فضلك أدخل كلمة المرور"
   },
   "forget_password_screen": {
-    "forget_password": "Forget Password",
-    "forget_password_title": "FORGET PASSWORD?",
-    "forget_password_sub_title": "Type your email down below and we will send you an email to reset your password.",
-    "send_email": "Send email",
-    "email": "Email",
-    "recalled_your_password": "Recalled your password?",
-    "signin": "Sign in"
+    "forget_password": "نسيت كلمة المرور؟",
+    "forget_password_title": "استرداد كلمة المرور",
+    "forget_password_sub_title": "أدخل بريدك الإلكتروني أدناه وسنرسل لك رسالة لإعادة تعيين كلمة المرور.",
+    "send_email": "أرسل بريدًا إلكترونيًا",
+    "email": "البريد الالكتروني",
+    "recalled_your_password": "تذكرت كلمة المرور؟",
+    "signin": " تسجيل الدخول"
   },
   "otp_screen": {
-    "verify": "Verify",
-    "otp_screen_title": "WE SENT YOU AN EMAIL",
-    "otp_screen_sub_title": "Check the code in your email and type it below."
+    "verify": "تأكيد البريد الالكتروني",
+    "otp_screen_title": "أرسلنا إليك رسالة بريد",
+    "otp_screen_sub_title": "أدخل الرمز الموجود في بريدك الإلكتروني."
   },
   "reset_password_screen": {
-    "reset_password": "Reset Password",
-    "reset_password_screen_title": "REST YOUR PASSWORD",
-    "reset_password_screen_sub_title": "Type your new password.",
-    "new_password": "New Password",
-    "Repeat_password": "Repeat Password",
-    "change_password": "Change Password"
+    "reset_password": "استرداد كلمة المررو",
+    "reset_password_screen_title": "استرداد كلمة المررو",
+    "reset_password_screen_sub_title": "ادخل كلمة المرور الجديدة.",
+    "new_password": "كلمة المرور الجديدة",
+    "Repeat_password": "تأكيد كلمة المرور",
+    "change_password": "تفيير كلمة المرور"
   },
   "premiere_league_id_screen": {
-    "premiere_league_id": "Your premiere league ID",
-    "premiere_league_id_screen_title": "UNLOCK AI FEATURES BY ADDING YOUR FPL ID",
-    "premiere_league_id_screen_sub_title": "By adding your FPL ID you'll be able to access all of our later AI Model features.",
-    "FPL_ID": "FBL ID",
+    "premiere_league_id": "اضافة الرقم التعريفي",
+    "premiere_league_id_screen_title": "أضف بيانات حسابك في الفانتازي لفتح ميزات الذكاء الاصطناعي",
+    "premiere_league_id_screen_sub_title": "لا تقلق! نحتاج فقط هذه البيانات لعرض معلومات فريقك داخل التطبيق. جميع المعلومات مشفرة بالكامل.",
+    "FPL_ID": "الرقم التعريفي",
+    "FPL_email": "البريد الالكتروني",
+    "FPL_password": "كلمة المرور",
+    "please_enter_your_email": "من فضلك أدخل البريد الالكتروني",
+    "please_enter_your_password": "من فضلك أدخل كلمة المرور",
+    "please_enter_your_id": "من فضلك أدخل الرقم التعريفي",
     "Paste_or_input": "Paste or input ID here",
-    "my_id": "This is my ID",
-    "add_later": "I'll add later in my account"
+    "my_id": "متابعة",
+    "add_later": "سوف اضيفه لاحقا من حسابي",
+    "where_can_i_find_my_iD": "أين يوجد الرقم التعريفي؟"
+  },
+  "find_premiere_league_id_screen": {
+    "your_premiere_league_iD": "اضافة الرقم التعريفي",
+    "unlock_ai_features": "أضف الرقم التعريفي “ID” لفتح ميزات الذكاء الاصطناعي"
+  },
+  "home_screen": {
+    "home_screen_title": "الرئيسية",
+    "home_screen_title_nav_bar": "الرئيسية"
+  },
+  "account_screen": {
+    "account_screen_title": "حسابي",
+    "language": "اللغة",
+    "delete_account": "حذف الحساب",
+    "signout": "تسجيل خروج"
+  },
+  "my_team_screen": {
+    "my_team_screen_title": "فريقي",
+    "have_not_import_team": "لم تقم بادخال فريق ال FPL الخاص بك بعد",
+    "could_not_import_team": "لم نتمكن من استيراد فريق ال FPL الخاص بك",
+    "not_available_functions": "بعض وظائف الذكاء الاصطناعي لن تكون متاحة إلا إذا تمكنا من تحليل فريقك.",
+    "import_my_team": "ادخل الفريق الخاص بي",
+    "overall_points": "النقاط الاجمالية",
+    "game_week_points": "نقاط الجولة",
+    "live_rank": "ترتيبك الحالي",
+    "game_week_rank": "ترتيبك هذه الجولة",
+    "substitutes": "البدلاء"
+  },
+  "point_prediction_screen": {
+    "point_prediction_screen_title": "تنبؤات النقاط"
+  },
+  "ai_team_screen": {
+    "ai_team_screen_title": "فرق الذكاء الاصطناعي",
+    "best_line_up": "أفضل تشكيلة مصممة بواسطة الذكاء الاصطناعي لهذه الجولة",
+    "substitutes": "البدلاء"
   },
   "ai_transfer_screen": {
     "make_transfer": "Make Transfer",

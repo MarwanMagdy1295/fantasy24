@@ -7,7 +7,7 @@ class AppTheme {
     displayLarge: TextStyle(
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic,
-      fontSize: 26.0.sp,
+      fontSize: 24.5.sp,
       color: AppColors.appBlack,
     ),
     displayMedium: TextStyle(
@@ -22,7 +22,7 @@ class AppTheme {
     ),
     headlineMedium: TextStyle(
       fontWeight: FontWeight.w600,
-      fontSize: 20.0.sp,
+      fontSize: 17.5.sp,
       color: AppColors.appBlack,
     ),
     headlineSmall: TextStyle(

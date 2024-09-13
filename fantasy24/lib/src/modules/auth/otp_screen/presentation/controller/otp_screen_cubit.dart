@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
 import 'package:next_match/src/modules/auth/otp_screen/data/model/user_model.dart';
 import 'package:next_match/src/modules/auth/otp_screen/data/model/verify_model.dart';
@@ -8,6 +9,7 @@ import 'package:next_match/src/modules/auth/otp_screen/data/repositories/verify_
 import 'package:next_match/src/modules/auth/otp_screen/presentation/controller/otp_screen_state.dart';
 import 'package:next_match/src/modules/auth/premiere_league_id_sscreen/presentation/ui/premiere_league_id_screen.dart';
 import 'package:next_match/src/modules/auth/reset_password/presentation/ui/reset_password_screen.dart';
+import 'package:next_match/widget/custom_toast.dart';
 
 class OtpScreenCubit extends BaseCubit<OtpScreenState>
     with
@@ -25,8 +27,7 @@ class OtpScreenCubit extends BaseCubit<OtpScreenState>
   bool fromSignup = false;
   UserModel? user;
 
-  void isButtonDisabled() {
-    emit(OtpScreenLoading());
+  void isButtonDisabled(BuildContext context) {
     if (controller.text.isNotEmpty) {
       isDisabled = false;
     } else {
@@ -68,6 +69,9 @@ class OtpScreenCubit extends BaseCubit<OtpScreenState>
       isLoading = false;
       emit(OtpScreenLoading());
       log('user error=>  $onError');
+      if (onError is SingleMessageResponseErrorModel) {
+        customToast(onError.message ?? '');
+      }
     });
   }
 }

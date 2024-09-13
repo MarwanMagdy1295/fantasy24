@@ -105,7 +105,7 @@ class PredictionPointData {
 
 class PlayerPrediction {
   String? id;
-  int? predictedPoints;
+  double? predictedPoints;
   String? eventId;
   Event? event;
 
@@ -119,7 +119,7 @@ class PlayerPrediction {
   factory PlayerPrediction.fromJson(Map<String, dynamic> json) =>
       PlayerPrediction(
         id: json["id"],
-        predictedPoints: json["predicted_points"],
+        predictedPoints: double.parse(json["predicted_points"].toString()),
         eventId: json["event_id"],
         event: Event.fromJson(json["event"]),
       );
@@ -227,16 +227,4 @@ class Team {
         "name": name,
         "short_name": shortName,
       };
-}
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

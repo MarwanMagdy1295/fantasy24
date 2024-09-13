@@ -75,9 +75,9 @@ class LoginScreen extends StatelessWidget {
                           children: [
                             Text(
                               signin_screen.signin_sub_title.tr(),
-                              style: AppTheme.textTheme.headlineSmall!.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.paragraph),
+                              style: AppTheme.textTheme.titleLarge!.copyWith(
+                                color: AppColors.paragraph,
+                              ),
                             ),
                           ],
                         ),
@@ -91,13 +91,14 @@ class LoginScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Container(
-                                width: 92.0.w,
-                                height: 36.0.h,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 24.0.sp, vertical: 6.0.h),
                                 margin: EdgeInsetsDirectional.only(
-                                    top: 8.0.h,
-                                    start: 8.0.h,
-                                    end: 16.0.h,
-                                    bottom: 8.0.h),
+                                  top: 8.0.h,
+                                  start: 8.0.h,
+                                  end: 16.0.h,
+                                  bottom: 8.0.h,
+                                ),
                                 decoration: BoxDecoration(
                                   color: AppColors.appBlack,
                                   borderRadius: BorderRadius.circular(4.0.r),
@@ -109,6 +110,7 @@ class LoginScreen extends StatelessWidget {
                                     style:
                                         AppTheme.textTheme.titleLarge?.copyWith(
                                       color: AppColors.white,
+                                      fontSize: 12.5.sp,
                                     ),
                                   ),
                                 ),
@@ -125,24 +127,22 @@ class LoginScreen extends StatelessWidget {
                                   );
                                 },
                                 child: Container(
-                                  width: 92.0.w,
-                                  height: 36.0.h,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 24.0.sp, vertical: 6.0.h),
                                   margin: EdgeInsetsDirectional.only(
-                                      top: 8.0.h,
-                                      start: 8.0.h,
-                                      end: 16.0.h,
-                                      bottom: 8.0.h),
+                                      top: 8.0.h, end: 16.0.h, bottom: 8.0.h),
                                   decoration: BoxDecoration(
                                     color: AppColors.transparent,
                                     borderRadius: BorderRadius.circular(4.0.r),
                                   ),
                                   child: Center(
                                     child: Text(
-                                      signup_screen.signup.tr(),
+                                      signin_screen.signup.tr(),
                                       textAlign: TextAlign.center,
                                       style: AppTheme.textTheme.titleLarge
                                           ?.copyWith(
                                         color: AppColors.appBlack,
+                                        fontSize: 12.5.sp,
                                       ),
                                     ),
                                   ),
@@ -156,13 +156,16 @@ class LoginScreen extends StatelessWidget {
                           controller: cubit.emailController,
                           title: signin_screen.email.tr(),
                           isTitileAviable: true,
-                          hint: signin_screen.email.tr(),
+                          hint: 'example@gmail.com',
                           hintStyle: AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0.sp,
                           ),
-                          titleStyle: AppTheme.textTheme.titleLarge,
+                          titleStyle: AppTheme.textTheme.titleLarge?.copyWith(
+                            fontSize: 12.5.sp,
+                          ),
                           contentStyle:
                               AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
@@ -189,7 +192,7 @@ class LoginScreen extends StatelessWidget {
                           color: AppColors.white,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter Your Email';
+                              return signin_screen.please_enter_your_email.tr();
                             }
                             //  else if (RegExp(
                             //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
@@ -214,19 +217,23 @@ class LoginScreen extends StatelessWidget {
                               ),
                             );
                           },
-                          hint: '********',
+                          hint: '•••••••••••',
                           obscureText: cubit.isHide,
                           hintStyle: AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0.sp,
                           ),
-                          titleStyle: AppTheme.textTheme.titleLarge,
+                          titleStyle: AppTheme.textTheme.titleLarge?.copyWith(
+                            fontSize: 12.5.sp,
+                          ),
                           contentStyle:
                               AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0.sp,
                           ),
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
@@ -262,7 +269,8 @@ class LoginScreen extends StatelessWidget {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter Your Password';
+                              return signin_screen.please_enter_your_password
+                                  .tr();
                             }
                             return null;
                           },
@@ -279,7 +287,8 @@ class LoginScreen extends StatelessWidget {
                                 titleStyle:
                                     AppTheme.textTheme.displayMedium?.copyWith(
                                   color: AppColors.white,
-                                  fontSize: 16.0.sp,
+                                  fontSize: 14.0.sp,
+                                  fontWeight: FontWeight.w500,
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0.r),

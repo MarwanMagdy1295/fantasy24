@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
-import 'package:next_match/src/modules/auth/otp_screen/data/model/user_model.dart';
-import 'package:next_match/src/modules/auth/premiere_league_id_sscreen/data/model/fbl_id_model.dart';
 import 'package:next_match/src/modules/auth/premiere_league_id_sscreen/data/repositories/premiere_league_id_screen_repository.dart';
 import 'package:next_match/src/modules/auth/premiere_league_id_sscreen/presentation/controller/premiere_league_id_screen_state.dart';
 import 'package:next_match/src/modules/main_screen/presentation/ui/main_screen.dart';
+import 'package:next_match/src/modules/my_team_screen/data/model/my_team_model.dart';
+import 'package:next_match/widget/custom_toast.dart';
 
 class PremiereLeagueIdScreenCubit extends BaseCubit<PremiereLeagueIdScreenState>
     with
@@ -20,34 +21,51 @@ class PremiereLeagueIdScreenCubit extends BaseCubit<PremiereLeagueIdScreenState>
       : _premiereLeagueIdScreenRepository = premiereLeagueIdScreenRepository,
         super(PremiereLeagueIdScreenInitial());
 
-  TextEditingController fblIdController = TextEditingController();
+  TextEditingController fplIdController = TextEditingController();
+  TextEditingController fplEmailController = TextEditingController();
+  TextEditingController fplPasswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool isLoading = false;
+  bool isHide = true;
 
-  Future<void> postLoginData(BuildContext context) async {
+  Future<void> importFplIdData(BuildContext context) async {
     if (formKey.currentState!.validate()) {
-      FblIdModel? res;
+      MyTeamModel? res;
       isLoading = true;
       emit(PremiereLeagueIdScreenLoading());
       await _premiereLeagueIdScreenRepository
-          .postFblId(id: fblIdController.text)
+          .postFblId(
+        id: fplIdController.text,
+        email: fplEmailController.text,
+        password: fplPasswordController.text,
+      )
           .then((value) {
         res = value;
-        UserModel user = res!.data!;
-        log('user=>  ${user.email}');
+        // Data myTeam = res!.data!;
         isLoading = false;
         emit(PremiereLeagueIdScreenLoading());
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const MainScreen(),
-          ),
-        );
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MainScreen(
+                myTeamModel: res,
+              ),
+            ),
+            (route) => false);
       }).catchError((onError) {
         isLoading = false;
         emit(PremiereLeagueIdScreenLoading());
-        log('login error=>  $onError');
+        log('PremiereLeagueId error=>  $onError');
+        if (onError is SingleMessageResponseErrorModel) {
+          customToast(onError.message ?? '');
+        }
       });
     }
+  }
+
+  hidePassword() {
+    emit(PremiereLeagueIdScreenLoading());
+    isHide = !isHide;
+    emit(PremiereLeagueIdScreenLoading());
   }
 }

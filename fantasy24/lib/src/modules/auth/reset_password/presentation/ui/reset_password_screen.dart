@@ -84,7 +84,7 @@ class ResetPasswordScreen extends StatelessWidget {
                               reset_password_screen
                                   .reset_password_screen_sub_title
                                   .tr(),
-                              style: AppTheme.textTheme.headlineSmall!.copyWith(
+                              style: AppTheme.textTheme.titleLarge!.copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.paragraph),
                             ),
@@ -101,13 +101,17 @@ class ResetPasswordScreen extends StatelessWidget {
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0.sp,
                           ),
-                          titleStyle: AppTheme.textTheme.titleLarge,
+                          titleStyle: AppTheme.textTheme.titleLarge?.copyWith(
+                            fontSize: 12.5.sp,
+                          ),
                           contentStyle:
                               AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0.sp,
                           ),
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
@@ -137,9 +141,9 @@ class ResetPasswordScreen extends StatelessWidget {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter Your Password';
+                              return signin_screen.please_enter_your_password;
                             } else if (value.length < 8) {
-                              return 'Password Should  8 Or More Than 8 Character';
+                              return signup_screen.password_validation.tr();
                             }
                             return null;
                           },
@@ -155,13 +159,17 @@ class ResetPasswordScreen extends StatelessWidget {
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0.sp,
                           ),
-                          titleStyle: AppTheme.textTheme.titleLarge,
+                          titleStyle: AppTheme.textTheme.titleLarge?.copyWith(
+                            fontSize: 12.5.sp,
+                          ),
                           contentStyle:
                               AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0.sp,
                           ),
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.done,
@@ -191,9 +199,10 @@ class ResetPasswordScreen extends StatelessWidget {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Repeat Password';
+                              return signup_screen.please_enter_your_password
+                                  .tr();
                             } else if (value != cubit.passwordController.text) {
-                              return 'Password Not match';
+                              return signup_screen.password_not_match.tr();
                             }
                             return null;
                           },
@@ -211,7 +220,8 @@ class ResetPasswordScreen extends StatelessWidget {
                                 titleStyle:
                                     AppTheme.textTheme.displayMedium?.copyWith(
                                   color: AppColors.white,
-                                  fontSize: 16.0.sp,
+                                  fontSize: 14.0.sp,
+                                  fontWeight: FontWeight.w500,
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0.r),

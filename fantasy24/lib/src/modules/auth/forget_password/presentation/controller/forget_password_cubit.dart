@@ -1,11 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
+import 'package:next_match/src/modules/auth/forget_password/data/model/forget_password_model.dart';
 import 'package:next_match/src/modules/auth/forget_password/data/repositories/forget_password_screen_repository.dart';
 import 'package:next_match/src/modules/auth/forget_password/presentation/controller/forget_password_state.dart';
-import 'package:next_match/src/modules/auth/login/data/model/login_model.dart';
 import 'package:next_match/src/modules/auth/otp_screen/presentation/ui/otp_screen.dart';
+import 'package:next_match/widget/custom_toast.dart';
 
 class ForgetPasswordCubit extends BaseCubit<ForgetPasswordState>
     with
@@ -23,7 +25,7 @@ class ForgetPasswordCubit extends BaseCubit<ForgetPasswordState>
 
   Future<void> sendEmail(BuildContext context) async {
     if (formKey.currentState!.validate()) {
-      LoginModel? res;
+      ForgetPasswordModel? res;
       isLoading = true;
       emit(ForgetPasswordLoading());
       await _forgetPasswordScreenRepository
@@ -32,7 +34,7 @@ class ForgetPasswordCubit extends BaseCubit<ForgetPasswordState>
       )
           .then((value) {
         res = value;
-        // di<PrefsService>().user.put(res!.data!.accessToken!);
+        customToast('${res?.data}');
         isLoading = false;
         emit(ForgetPasswordLoading());
         Navigator.push(
@@ -47,6 +49,9 @@ class ForgetPasswordCubit extends BaseCubit<ForgetPasswordState>
         isLoading = false;
         emit(ForgetPasswordLoading());
         log('ForgetPassword error=>  $onError');
+        if (onError is SingleMessageResponseErrorModel) {
+          customToast(onError.message ?? '');
+        }
       });
     }
   }

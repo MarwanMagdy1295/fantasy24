@@ -78,7 +78,7 @@ class OtpScreen extends StatelessWidget {
                           children: [
                             Text(
                               otp_screen.otp_screen_sub_title.tr(),
-                              style: AppTheme.textTheme.headlineSmall!.copyWith(
+                              style: AppTheme.textTheme.titleLarge!.copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.paragraph),
                             ),
@@ -89,26 +89,38 @@ class OtpScreen extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
                           child: PinCodeTextField(
                             controller: cubit.controller,
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.text,
                             enablePinAutofill: true,
+                            cursorColor: AppColors.primary,
+                            cursorHeight: 20.0.h,
                             autoFocus: true,
                             length: 5,
                             obscureText: false,
                             animationType: AnimationType.slide,
-                            onSaved: (v) {},
+                            onCompleted: (v) {
+                              cubit.isButtonDisabled(context);
+                            },
+                            onEditingComplete: () {
+                              cubit.isButtonDisabled(context);
+                            },
+                            onSubmitted: (v) {
+                              cubit.isButtonDisabled(context);
+                            },
+                            onSaved: (v) {
+                              cubit.isButtonDisabled(context);
+                            },
                             enableActiveFill: true,
-                            hintCharacter: '0',
                             textStyle: AppTheme.textTheme.displayLarge,
                             pinTheme: PinTheme(
                               fieldHeight: 56.0.h,
                               fieldWidth:
-                                  MediaQuery.of(context).size.width.w / 6.4,
+                                  MediaQuery.of(context).size.width.w / 7,
                               selectedFillColor: AppColors.white,
                               inactiveFillColor: AppColors.white,
                               activeFillColor: AppColors.white,
-                              selectedColor: AppColors.grey,
+                              selectedColor: AppColors.primary,
                               inactiveColor: AppColors.grey,
-                              activeColor: AppColors.grey,
+                              activeColor: AppColors.primary,
                               errorBorderColor: AppColors.red,
                               disabledColor: AppColors.white,
                               borderRadius: BorderRadius.circular(8.0.r),
@@ -117,7 +129,7 @@ class OtpScreen extends StatelessWidget {
                             ),
                             appContext: context,
                             onChanged: (String value) {
-                              cubit.isButtonDisabled();
+                              cubit.isButtonDisabled(context);
                             },
                           ),
                         ),
@@ -135,7 +147,8 @@ class OtpScreen extends StatelessWidget {
                                 titleStyle:
                                     AppTheme.textTheme.displayMedium?.copyWith(
                                   color: AppColors.white,
-                                  fontSize: 16.0.sp,
+                                  fontSize: 14.0.sp,
+                                  fontWeight: FontWeight.w500,
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0.r),

@@ -12,6 +12,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/game_week_point.svg
+  SvgGenImage get gameWeekPoint => const SvgGenImage('assets/icons/game_week_point.svg');
+
+  /// File path: assets/icons/game_week_rank.svg
+  SvgGenImage get gameWeekRank => const SvgGenImage('assets/icons/game_week_rank.svg');
+
+  /// File path: assets/icons/live_rank.svg
+  SvgGenImage get liveRank => const SvgGenImage('assets/icons/live_rank.svg');
+
+  /// File path: assets/icons/overall_points.svg
+  SvgGenImage get overallPoints => const SvgGenImage('assets/icons/overall_points.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [gameWeekPoint, gameWeekRank, liveRank, overallPoints];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -24,11 +43,14 @@ class $AssetsImagesGen {
   /// File path: assets/images/avatar_image.png
   AssetGenImage get avatarImage => const AssetGenImage('assets/images/avatar_image.png');
 
+  /// File path: assets/images/fpl_id.png
+  AssetGenImage get fplId => const AssetGenImage('assets/images/fpl_id.png');
+
   /// File path: assets/images/splash_screen.svg
   SvgGenImage get splashScreen => const SvgGenImage('assets/images/splash_screen.svg');
 
   /// List of all assets
-  List<dynamic> get values => [playerImage, playground, avatarImage, splashScreen];
+  List<dynamic> get values => [playerImage, playground, avatarImage, fplId, splashScreen];
 }
 
 class $AssetsTranslationsGen {
@@ -47,6 +69,7 @@ class $AssetsTranslationsGen {
 class Assets {
   Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }

@@ -1,6 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:next_match/src/core/api/network_service.dart';
 import 'package:next_match/src/core/services/prefs_service.dart';
+import 'package:next_match/src/modules/account_screen/data/data_source/account_screen_remote_data_source.dart';
+import 'package:next_match/src/modules/account_screen/data/repositories/account_screen_repository.dart';
+import 'package:next_match/src/modules/account_screen/presentation/controller/cubit/account_screen_cubit.dart';
+import 'package:next_match/src/modules/ai_team_screen/data/data_source/ai_teams_screen_remote_data_source.dart';
+import 'package:next_match/src/modules/ai_team_screen/data/repositories/ai_teams_screen_repository.dart';
+import 'package:next_match/src/modules/ai_team_screen/presentation/controller/cubit/ai_teams_cubit.dart';
 import 'package:next_match/src/modules/auth/forget_password/data/data_source/forget_password_screen_remote_data_source.dart';
 import 'package:next_match/src/modules/auth/forget_password/data/repositories/forget_password_screen_repository.dart';
 import 'package:next_match/src/modules/auth/forget_password/presentation/controller/forget_password_cubit.dart';
@@ -19,6 +25,9 @@ import 'package:next_match/src/modules/auth/reset_password/presentation/controll
 import 'package:next_match/src/modules/auth/signup/data/data_source/signup_screen_remote_data_source.dart';
 import 'package:next_match/src/modules/auth/signup/data/repositories/signup_screen_repository.dart';
 import 'package:next_match/src/modules/auth/signup/presentation/controller/cubit/signup_screen_cubit.dart';
+import 'package:next_match/src/modules/my_team_screen/data/data_source/my_team_screen_remote_data_source.dart';
+import 'package:next_match/src/modules/my_team_screen/data/repositories/my_teams_screen_repository.dart';
+import 'package:next_match/src/modules/my_team_screen/presentation/controller/cubit/my_team_cubit.dart';
 import 'package:next_match/src/modules/predicted_points/data/data_source/prediction_point_screen_remote_data_source.dart';
 import 'package:next_match/src/modules/predicted_points/data/repositories/prediction_point_screen_repository.dart';
 import 'package:next_match/src/modules/predicted_points/presentation/controller/cubit/point_prediction_cubit.dart';
@@ -171,6 +180,57 @@ class DiService {
     di.registerLazySingleton(
       () => PointPredictionCubit(
         pointPredictionScreenRepository: di(),
+      ),
+    );
+
+    // AiTeamsScreen
+    di.registerLazySingleton(
+      () => AITeamsScreenRemoteDataSource(
+        networkService: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => AITeamsScreenRepository(
+        aiTeamsScreenRemoteDataSource: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => AiTeamsCubit(
+        aiTeamsScreenRepository: di(),
+      ),
+    );
+
+    // MyTeamScreen
+    di.registerLazySingleton(
+      () => MyTeamScreenRemoteDataSource(
+        networkService: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => MyTeamScreenRepository(
+        myTeamScreenRemoteDataSource: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => MyTeamCubit(
+        myTeamScreenRepository: di(),
+      ),
+    );
+
+    // AccountScreen
+    di.registerLazySingleton(
+      () => AccountScreenRemoteDataSource(
+        networkService: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => AccountScreenRepository(
+        accountScreenRemoteDataSource: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => AccountScreenCubit(
+        accountScreenRepository: di(),
       ),
     );
   }

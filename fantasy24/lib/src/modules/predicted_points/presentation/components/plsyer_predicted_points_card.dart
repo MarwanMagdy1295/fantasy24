@@ -5,10 +5,16 @@ import 'package:next_match/src/core/utils/assets/assets.gen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:next_match/src/core/utils/app_theme.dart';
 import 'package:next_match/src/core/utils/constants.dart';
+import 'package:next_match/src/modules/predicted_points/data/model/point_prediction_model.dart';
+import 'package:next_match/src/modules/predicted_points/presentation/controller/cubit/point_prediction_cubit.dart';
 
 class PlayerPredictedPointCard extends StatelessWidget {
+  final PredictionPointData predictionPoint;
+  final PointPredictionCubit predictionCubit;
   const PlayerPredictedPointCard({
     super.key,
+    required this.predictionPoint,
+    required this.predictionCubit,
   });
 
   @override
@@ -22,6 +28,7 @@ class PlayerPredictedPointCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0.r),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,8 +38,10 @@ class PlayerPredictedPointCard extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(42.0),
                     child: CachedNetworkImage(
-                      imageUrl: '',
+                      imageUrl: predictionPoint.photo!,
                       imageBuilder: (context, imageProvider) => Container(
+                        height: 40.0,
+                        width: 40.0,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: imageProvider,
@@ -62,13 +71,19 @@ class PlayerPredictedPointCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Alisson Becker',
+                        '${predictionPoint.firstName!} ${predictionPoint.secondName!}',
                         style: AppTheme.textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
-                        'Goal Keeper',
+                        predictionPoint.playerTypeId == 1
+                            ? 'GoolKeper'
+                            : predictionPoint.playerTypeId == 2
+                                ? 'Defender'
+                                : predictionPoint.playerTypeId == 3
+                                    ? 'Midfielder'
+                                    : 'Striker',
                         style: AppTheme.textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w500,
                           color: AppColors.paragraph,
@@ -79,7 +94,7 @@ class PlayerPredictedPointCard extends StatelessWidget {
                 ],
               ),
               Text(
-                '\$2.3m',
+                '${predictionPoint.nowCost}m',
                 style: AppTheme.textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -90,77 +105,31 @@ class PlayerPredictedPointCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                children: [
-                  Text(
-                    'GW1',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.paragraph,
+              ...predictionCubit.playerPredictionsList!.map(
+                (playerPrediction) => Column(
+                  children: [
+                    Text(
+                      playerPrediction.event!.name!,
+                      style: AppTheme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.paragraph,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '8.7',
-                    style: AppTheme.textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w500,
+                    Text(
+                      playerPrediction.predictedPoints!.toStringAsFixed(1),
+                      style: AppTheme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Vs WHU',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.paragraph,
+                    Text(
+                      'Vs ${predictionCubit.getVsTeam(predictionPoint, playerPrediction)}',
+                      style: AppTheme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.paragraph,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    'GW1',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.paragraph,
-                    ),
-                  ),
-                  Text(
-                    '8.7',
-                    style: AppTheme.textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    'Vs WHU',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.paragraph,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    'GW1',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.paragraph,
-                    ),
-                  ),
-                  Text(
-                    '8.7',
-                    style: AppTheme.textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    'Vs WHU',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.paragraph,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Column(
                 children: [

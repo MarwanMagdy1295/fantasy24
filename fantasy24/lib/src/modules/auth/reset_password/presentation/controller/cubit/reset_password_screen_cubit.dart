@@ -1,11 +1,15 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
 import 'package:next_match/src/modules/auth/login/presentation/ui/login_screen.dart';
 import 'package:next_match/src/modules/auth/reset_password/data/repositories/reset_password_screen_repository.dart';
 import 'package:next_match/src/modules/auth/reset_password/presentation/controller/cubit/reset_password_screen_state.dart';
 import 'package:next_match/src/modules/auth/signup/data/model/sign_up_model.dart';
+import 'package:next_match/widget/custom_toast.dart';
 
 class ResetPasswordScreenCubit extends BaseCubit<ResetPasswordScreenState>
     with
@@ -61,6 +65,9 @@ class ResetPasswordScreenCubit extends BaseCubit<ResetPasswordScreenState>
         isLoading = false;
         emit(ResetPasswordScreenLoading());
         log('signup error=>  $onError');
+        if (onError is SingleMessageResponseErrorModel) {
+          customToast(onError.message ?? '');
+        }
       });
     }
   }

@@ -19,7 +19,7 @@ class VerifyScreenRemoteDataSource
   @override
   Future<VerifyModel?> verify({required String code}) async {
     try {
-      final res = await _networkService.postData(
+      final res = await _networkService.getData(
         url: 'auth/Verify?code=$code',
         token: false,
       );

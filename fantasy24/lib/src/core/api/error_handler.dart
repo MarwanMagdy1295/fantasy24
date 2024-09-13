@@ -10,8 +10,8 @@ class ErrorModel {
 
   static ErrorModel parse(
     Object e, {
-    MultiMessageResponseErrorModel Function(Map<String, dynamic> errors)?
-        multiMessageResponseModel,
+    SingleMessageResponseErrorModel Function(String error)?
+        singleMessageResponseModel,
   }) {
     if (e is DioException) {
       switch (e.type) {
@@ -24,7 +24,7 @@ class ErrorModel {
         case DioExceptionType.badResponse:
           return ResponseErrorModel.parse(
             response: e.response!,
-            multiMessageResponseModel: multiMessageResponseModel,
+            singleMessageResponseModel: singleMessageResponseModel,
           );
         case DioExceptionType.unknown:
           if (e.error is SocketException) {
@@ -58,8 +58,8 @@ abstract class ResponseErrorModel extends ErrorModel {
 
   static ResponseErrorModel parse({
     required Response response,
-    MultiMessageResponseErrorModel Function(Map<String, dynamic> errors)?
-        multiMessageResponseModel,
+    SingleMessageResponseErrorModel Function(String errors)?
+        singleMessageResponseModel,
   }) {
     final status = response.statusCode;
 
@@ -70,18 +70,23 @@ abstract class ResponseErrorModel extends ErrorModel {
         return NotFoundResponseErrorModel();
       case HttpStatus.badRequest:
         try {
-          final errorContent = response.data['errors'];
+          final errorContent = response.data['message'];
 
-          return multiMessageResponseModel?.call(errorContent) ??
-              MultiMessageResponseErrorModel(
-                errors: errorContent,
+          return singleMessageResponseModel?.call(errorContent) ??
+              SingleMessageResponseErrorModel(
+                message: errorContent,
               );
         } catch (e) {
           return UnexpectedResponseErrorModel();
         }
     }
 
-    return InternalServerResponseErrorModel();
+    final errorContent = response.data['message'];
+    return singleMessageResponseModel?.call(errorContent) ??
+        SingleMessageResponseErrorModel(
+          message: errorContent,
+        );
+    // return InternalServerResponseErrorModel();
   }
 }
 

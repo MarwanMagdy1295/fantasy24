@@ -10,6 +10,7 @@ class AppColors {
   static const Color secondryLighter = Color(0xffD8F8A5);
   static const Color secondryDark = Color(0xff406308);
   static const Color paragraph = Color(0xff6E6D87);
+  static const Color paragraphLighter = Color(0xffC1C1CD);
   static const Color background = Color(0xffF4F4F6);
   static const Color schemeSecondary = Color(0xffE8DEF8);
   static const Color schemeBlack = Color(0xff1D1B20);

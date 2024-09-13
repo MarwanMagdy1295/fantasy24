@@ -1,9 +1,11 @@
 import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/api/network_service.dart';
-import 'package:next_match/src/modules/auth/premiere_league_id_sscreen/data/model/fbl_id_model.dart';
+import 'package:next_match/src/modules/my_team_screen/data/model/my_team_model.dart';
 
 abstract class PremiereLeagueIdScreenRemoteDataSourceInterface {
-  Future<FblIdModel?> postFblId({
+  Future<MyTeamModel?> postFblId({
+    required String email,
+    required String password,
     required String id,
   });
 }
@@ -17,11 +19,19 @@ class PremiereLeagueIdScreenRemoteDataSource
   }) : _networkService = networkService;
 
   @override
-  Future<FblIdModel?> postFblId({required String id}) async {
+  Future<MyTeamModel?> postFblId({
+    required String email,
+    required String password,
+    required String id,
+  }) async {
     try {
-      final res = await _networkService.postData(
-          url: 'users/fpl/teamId', token: true, data: {"fpl_team_id": id});
-      return FblIdModel.fromJson(res.data);
+      final res =
+          await _networkService.postData(url: 'fpl/myteam', token: true, data: {
+        "fpl_team_id": int.parse(id),
+        "fpl_email": email,
+        "fpl_password": password,
+      });
+      return MyTeamModel.fromJson(res.data);
     } catch (e) {
       throw ErrorModel.parse(e);
     }

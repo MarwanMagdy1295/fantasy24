@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_match/src/core/utils/app_colors.dart';
 import 'package:next_match/src/core/utils/app_theme.dart';
 import 'package:next_match/src/core/utils/constants.dart';
@@ -48,7 +49,9 @@ Column customTextFeild({
                         child: Text(
                           signin_screen.forgot_password.tr(),
                           style: AppTheme.textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12.5.sp,
+                            color: AppColors.paragraph,
                           ),
                         ),
                       )

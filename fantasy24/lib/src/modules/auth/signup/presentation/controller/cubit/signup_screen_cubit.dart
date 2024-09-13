@@ -2,12 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:next_match/src/app/di_service.dart';
+import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
 import 'package:next_match/src/core/services/prefs_service.dart';
 import 'package:next_match/src/modules/auth/otp_screen/presentation/ui/otp_screen.dart';
 import 'package:next_match/src/modules/auth/signup/data/model/sign_up_model.dart';
 import 'package:next_match/src/modules/auth/signup/data/repositories/signup_screen_repository.dart';
 import 'package:next_match/src/modules/auth/signup/presentation/controller/cubit/signup_screen_state.dart';
+import 'package:next_match/widget/custom_toast.dart';
 
 class SignupScreenCubit extends BaseCubit<SignupScreenState>
     with
@@ -64,6 +66,9 @@ class SignupScreenCubit extends BaseCubit<SignupScreenState>
         isLoading = false;
         emit(SignupScreenLoading());
         log('signup error=>  $onError');
+        if (onError is SingleMessageResponseErrorModel) {
+          customToast(onError.message ?? '');
+        }
       });
     }
   }

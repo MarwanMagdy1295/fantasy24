@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:next_match/src/app/di_service.dart';
+import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
 import 'package:next_match/src/core/services/prefs_service.dart';
 import 'package:next_match/src/modules/auth/login/data/model/login_model.dart';
@@ -54,8 +55,10 @@ class LoginScreenCubit extends BaseCubit<LoginScreenState>
       }).catchError((onError) {
         isLoading = false;
         emit(LoginScreenLoadingState());
-        customToast('Email Or Password Not Valid');
         log('login error=>  $onError');
+        if (onError is SingleMessageResponseErrorModel) {
+          customToast(onError.message ?? '');
+        }
       });
     }
   }

@@ -18,7 +18,7 @@ class AppLayout extends StatelessWidget {
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       useOnlyLangCode: true,
-      startLocale: const Locale('en'),
+      startLocale: const Locale('ar'),
       // Locale(di<PrefsService>()
       //     .locale
       //     .get()),

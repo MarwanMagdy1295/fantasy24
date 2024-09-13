@@ -1,9 +1,9 @@
 import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/api/network_service.dart';
-import 'package:next_match/src/modules/auth/login/data/model/login_model.dart';
+import 'package:next_match/src/modules/auth/forget_password/data/model/forget_password_model.dart';
 
 abstract class ForgetPasswordScreenRemoteDataSourceInterface {
-  Future<LoginModel?> forgetPasswordSendEmail({required String email});
+  Future<ForgetPasswordModel?> forgetPasswordSendEmail({required String email});
 }
 
 class ForgetPasswordScreenRemoteDataSource
@@ -15,13 +15,14 @@ class ForgetPasswordScreenRemoteDataSource
   }) : _networkService = networkService;
 
   @override
-  Future<LoginModel?> forgetPasswordSendEmail({required String email}) async {
+  Future<ForgetPasswordModel?> forgetPasswordSendEmail(
+      {required String email}) async {
     try {
       final res = await _networkService.postData(
           url: 'users/password/sendemail',
           token: false,
           data: {"email": email});
-      return LoginModel.fromJson(res.data);
+      return ForgetPasswordModel.fromJson(res.data);
     } catch (e) {
       throw ErrorModel.parse(e);
     }

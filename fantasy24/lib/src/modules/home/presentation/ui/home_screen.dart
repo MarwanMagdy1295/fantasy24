@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,11 +7,17 @@ import 'package:next_match/src/core/utils/app_theme.dart';
 import 'package:next_match/src/modules/ai_team_screen/presentation/ui/ai_team_screen.dart';
 import 'package:next_match/src/modules/ai_transfer_screen/presentation/ui/ai_transfer.dart';
 import 'package:next_match/src/modules/home/presentation/controller/cubit/home_screen_cubit.dart';
+import 'package:next_match/src/modules/my_team_screen/data/model/my_team_model.dart';
 import 'package:next_match/src/modules/my_team_screen/presentation/ui/my_team_screen.dart';
 import 'package:next_match/src/modules/predicted_points/presentation/ui/points_prediction.dart';
+import 'package:next_match/src/core/utils/assets/translations/keys.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final MyTeamModel? myTeamModel;
+  const HomeScreen({
+    super.key,
+    this.myTeamModel,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -77,7 +84,6 @@ class _HomeScreenState extends State<HomeScreen>
                   contentPadding: EdgeInsets.only(
                     left: 16.0.w,
                     right: 16.0.w,
-                    top: 16.0.h,
                   ),
                   // leading: const Icon(
                   //   Icons.arrow_back,
@@ -110,30 +116,31 @@ class _HomeScreenState extends State<HomeScreen>
                   overlayColor:
                       const MaterialStatePropertyAll(AppColors.transparent),
                   unselectedLabelColor: AppColors.appBlack,
-                  labelStyle: AppTheme.textTheme.titleLarge?.copyWith(
+                  labelStyle: AppTheme.textTheme.bodyMedium?.copyWith(
                     color: AppColors.white,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   ),
-                  tabs: const [
+                  tabs: [
                     Tab(
                       icon: Text(
-                        'My Team',
+                        my_team_screen.my_team_screen_title.tr(),
                         textAlign: TextAlign.center,
                       ),
                     ),
                     Tab(
                       icon: Text(
-                        'Points predictions',
+                        point_prediction_screen.point_prediction_screen_title
+                            .tr(),
                         textAlign: TextAlign.center,
                       ),
                     ),
                     Tab(
                       icon: Text(
-                        'AI Team',
+                        ai_team_screen.ai_team_screen_title.tr(),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    Tab(
+                    const Tab(
                       icon: Text(
                         'AI Transfare',
                         textAlign: TextAlign.center,
@@ -144,11 +151,11 @@ class _HomeScreenState extends State<HomeScreen>
                 Expanded(
                   child: TabBarView(
                     controller: tabController,
-                    children: const [
-                      MyTeamScreen(),
-                      PointsPredection(),
-                      AiTeamScreen(),
-                      AiTransfer(),
+                    children: [
+                      MyTeamScreen(myTeamModel: widget.myTeamModel),
+                      const PointsPredection(),
+                      const AiTeamScreen(),
+                      const AiTransfer(),
                     ],
                   ),
                 ),

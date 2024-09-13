@@ -16,7 +16,7 @@ Future customButtomSheet({context, required Widget child}) {
       return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(12.0.r)),
-          color: AppColors.white,
+          color: AppColors.background,
         ),
         child: SingleChildScrollView(
           child: Column(
