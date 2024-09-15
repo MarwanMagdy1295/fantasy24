@@ -44,13 +44,14 @@ dependencies:
   cached_network_image: ^3.3.1
   font_awesome_flutter: ^10.7.0
   fl_chart: ^0.68.0
+  rename: ^3.0.2
   loading_indicator: ^3.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.0
   build_runner: null
   flutter_gen_runner: null
 
@@ -67,6 +68,12 @@ flutter_gen:
   line_length: 120
   integrations:
     flutter_svg: true
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/app_icon.png"
 
 
 # The following section is specific to Flutter packages.
