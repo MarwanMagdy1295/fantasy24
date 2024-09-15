@@ -82,6 +82,10 @@
     "delete_account": "حذف الحساب",
     "signout": "تسجيل خروج"
   },
+  "language_screen": {
+    "title": "اللغة",
+    "change_language": "تغير اللغة"
+  },
   "my_team_screen": {
     "my_team_screen_title": "فريقي",
     "have_not_import_team": "لم تقم بادخال فريق ال FPL الخاص بك بعد",

@@ -84,6 +84,10 @@
     "delete_account": "Delete Account",
     "signout": "Sign Out"
   },
+  "language_screen": {
+    "title": "Language",
+    "change_language": "Change Language"
+  },
   "my_team_screen": {
     "my_team_screen_title": "My Team",
     "have_not_import_team": "You haven’t imported your team yet",
