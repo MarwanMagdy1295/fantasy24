@@ -53,6 +53,7 @@ class LoginScreen extends StatelessWidget {
                               style:
                                   AppTheme.textTheme.headlineMedium!.copyWith(
                                 fontWeight: FontWeight.w500,
+                                color: AppColors.appBlack,
                               ),
                             ),
                           ],

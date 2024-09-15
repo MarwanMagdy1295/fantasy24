@@ -36,4 +36,8 @@ class AccountScreenCubit extends BaseCubit<AccountScreenState>
       }
     });
   }
+
+  void refresh() {
+    emit(AccountScreenLoading());
+  }
 }

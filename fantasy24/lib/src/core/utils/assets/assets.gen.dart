@@ -46,11 +46,17 @@ class $AssetsImagesGen {
   /// File path: assets/images/fpl_id.png
   AssetGenImage get fplId => const AssetGenImage('assets/images/fpl_id.png');
 
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/splash_screen.png
+  AssetGenImage get splashScreenPng => const AssetGenImage('assets/images/splash_screen.png');
+
   /// File path: assets/images/splash_screen.svg
-  SvgGenImage get splashScreen => const SvgGenImage('assets/images/splash_screen.svg');
+  SvgGenImage get splashScreenSvg => const SvgGenImage('assets/images/splash_screen.svg');
 
   /// List of all assets
-  List<dynamic> get values => [playerImage, playground, avatarImage, fplId, splashScreen];
+  List<dynamic> get values => [playerImage, playground, avatarImage, fplId, logo, splashScreenPng, splashScreenSvg];
 }
 
 class $AssetsTranslationsGen {

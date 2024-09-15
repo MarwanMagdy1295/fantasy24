@@ -39,8 +39,25 @@ class _SplashScreenState extends State<SplashScreen> {
       body: SizedBox(
         height: MediaQuery.sizeOf(context).height.h,
         width: MediaQuery.sizeOf(context).width.w,
-        child: Assets.images.splashScreen.svg(
-          fit: BoxFit.fill,
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Assets.images.splashScreenPng.image(
+                fit: BoxFit.fill,
+              ),
+            ),
+            Positioned(
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Assets.images.logo.image(),
+            ),
+          ],
         ),
       ),
     );

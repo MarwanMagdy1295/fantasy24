@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class _CacheConstants {
   static const String user = 'user';
   static const String locale = 'lang';
+  static const String fplID = 'fplID';
 }
 
 class PrefsService {
@@ -15,10 +16,15 @@ class PrefsService {
 
   final user = const UserCache();
   final locale = const LocaleCache();
+  final fplID = const FPLID();
 }
 
 class UserCache extends _CacheField<String> {
   const UserCache() : super(_CacheConstants.user);
+}
+
+class FPLID extends _CacheField<String> {
+  const FPLID() : super(_CacheConstants.fplID);
 }
 
 class LocaleCache extends _CacheField<String> {

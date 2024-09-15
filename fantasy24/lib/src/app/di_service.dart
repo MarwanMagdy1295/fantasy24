@@ -25,6 +25,7 @@ import 'package:next_match/src/modules/auth/reset_password/presentation/controll
 import 'package:next_match/src/modules/auth/signup/data/data_source/signup_screen_remote_data_source.dart';
 import 'package:next_match/src/modules/auth/signup/data/repositories/signup_screen_repository.dart';
 import 'package:next_match/src/modules/auth/signup/presentation/controller/cubit/signup_screen_cubit.dart';
+import 'package:next_match/src/modules/choose_lang/presentation/controller/cubit/cubit.dart';
 import 'package:next_match/src/modules/my_team_screen/data/data_source/my_team_screen_remote_data_source.dart';
 import 'package:next_match/src/modules/my_team_screen/data/repositories/my_teams_screen_repository.dart';
 import 'package:next_match/src/modules/my_team_screen/presentation/controller/cubit/my_team_cubit.dart';
@@ -232,6 +233,11 @@ class DiService {
       () => AccountScreenCubit(
         accountScreenRepository: di(),
       ),
+    );
+
+    // changeLanguageScreen
+    di.registerLazySingleton(
+      () => ChangeLangCubit(),
     );
   }
 }

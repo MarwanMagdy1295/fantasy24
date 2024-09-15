@@ -32,7 +32,7 @@ class MyTeamCubit extends BaseCubit<MyTeamState>
   UserData? user;
 
   void formation() {
-    playersList = myTeamModel?.data?[0].picks?.sublist(0, 10);
+    playersList = myTeamModel?.data?[0].picks?.sublist(0, 11);
     defenderPlayers?.clear();
     midfielderPlayers?.clear();
     strikerPlayers?.clear();

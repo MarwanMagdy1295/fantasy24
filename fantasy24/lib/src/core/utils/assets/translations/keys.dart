@@ -96,6 +96,11 @@ class account_screen {
   static const String signout = "account_screen.signout";
 }
 
+class language_screen {
+  static const String title = "language_screen.title";
+  static const String change_language = "language_screen.change_language";
+}
+
 class my_team_screen {
   static const String my_team_screen_title = "my_team_screen.my_team_screen_title";
   static const String have_not_import_team = "my_team_screen.have_not_import_team";

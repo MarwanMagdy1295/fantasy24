@@ -9,5 +9,7 @@ Future<void> main() async {
   // await Firebase.initializeApp();
   // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   await DiService.init();
-  runApp(const AppLayout());
+  runApp(
+    const AppLayout(),
+  );
 }

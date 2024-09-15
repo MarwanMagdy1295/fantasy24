@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_match/src/core/utils/app_colors.dart';
 import 'package:next_match/src/core/utils/app_theme.dart';
 import 'package:next_match/src/modules/ai_team_screen/presentation/ui/ai_team_screen.dart';
-import 'package:next_match/src/modules/ai_transfer_screen/presentation/ui/ai_transfer.dart';
 import 'package:next_match/src/modules/home/presentation/controller/cubit/home_screen_cubit.dart';
 import 'package:next_match/src/modules/my_team_screen/data/model/my_team_model.dart';
 import 'package:next_match/src/modules/my_team_screen/presentation/ui/my_team_screen.dart';
@@ -30,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     tabController = TabController(
-      length: 4,
+      length: 3,
       vsync: this,
     );
     super.initState();
@@ -140,12 +139,12 @@ class _HomeScreenState extends State<HomeScreen>
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    const Tab(
-                      icon: Text(
-                        'AI Transfare',
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                    // const Tab(
+                    //   icon: Text(
+                    //     'AI Transfare',
+                    //     textAlign: TextAlign.center,
+                    //   ),
+                    // ),
                   ],
                 ),
                 Expanded(
@@ -155,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen>
                       MyTeamScreen(myTeamModel: widget.myTeamModel),
                       const PointsPredection(),
                       const AiTeamScreen(),
-                      const AiTransfer(),
+                      // const AiTransfer(),
                     ],
                   ),
                 ),

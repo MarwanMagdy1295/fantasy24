@@ -14,52 +14,52 @@ class MainScreen extends StatefulWidget {
     super.key,
     this.myTeamModel,
   });
-  static List<NavigationDestination> navigation = <NavigationDestination>[
-    NavigationDestination(
-      selectedIcon: const Icon(
-        Icons.cottage_outlined,
-        color: AppColors.paragraph,
-      ),
-      icon: const Icon(
-        Icons.cottage_outlined,
-        color: AppColors.paragraph,
-      ),
-      label: home_screen.home_screen_title_nav_bar.tr(),
-    ),
-    // NavigationDestination(
-    //   selectedIcon: Icon(
-    //     Icons.art_track_outlined,
-    //     color: AppColors.paragraph,
-    //   ),
-    //   icon: Icon(
-    //     Icons.art_track_outlined,
-    //     color: AppColors.paragraph,
-    //   ),
-    //   label: 'Resources',
-    // ),
-    // NavigationDestination(
-    //   selectedIcon: Icon(
-    //     Icons.home_repair_service_outlined,
-    //     color: AppColors.paragraph,
-    //   ),
-    //   icon: Icon(
-    //     Icons.home_repair_service_outlined,
-    //     color: AppColors.paragraph,
-    //   ),
-    //   label: 'Toolbox',
-    // ),
-    NavigationDestination(
-      selectedIcon: const Icon(
-        Icons.account_circle_outlined,
-        color: AppColors.paragraph,
-      ),
-      icon: const Icon(
-        Icons.account_circle_outlined,
-        color: AppColors.paragraph,
-      ),
-      label: account_screen.account_screen_title.tr(),
-    ),
-  ];
+  // static List<NavigationDestination> navigation = <NavigationDestination>[
+  //   NavigationDestination(
+  //     selectedIcon: const Icon(
+  //       Icons.cottage_outlined,
+  //       color: AppColors.paragraph,
+  //     ),
+  //     icon: const Icon(
+  //       Icons.cottage_outlined,
+  //       color: AppColors.paragraph,
+  //     ),
+  //     label: home_screen.home_screen_title_nav_bar.tr(),
+  //   ),
+  //   // NavigationDestination(
+  //   //   selectedIcon: Icon(
+  //   //     Icons.art_track_outlined,
+  //   //     color: AppColors.paragraph,
+  //   //   ),
+  //   //   icon: Icon(
+  //   //     Icons.art_track_outlined,
+  //   //     color: AppColors.paragraph,
+  //   //   ),
+  //   //   label: 'Resources',
+  //   // ),
+  //   // NavigationDestination(
+  //   //   selectedIcon: Icon(
+  //   //     Icons.home_repair_service_outlined,
+  //   //     color: AppColors.paragraph,
+  //   //   ),
+  //   //   icon: Icon(
+  //   //     Icons.home_repair_service_outlined,
+  //   //     color: AppColors.paragraph,
+  //   //   ),
+  //   //   label: 'Toolbox',
+  //   // ),
+  //   NavigationDestination(
+  //     selectedIcon: const Icon(
+  //       Icons.account_circle_outlined,
+  //       color: AppColors.paragraph,
+  //     ),
+  //     icon: const Icon(
+  //       Icons.account_circle_outlined,
+  //       color: AppColors.paragraph,
+  //     ),
+  //     label: account_screen.account_screen_title.tr(),
+  //   ),
+  // ];
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -104,7 +104,53 @@ class _MainScreenState extends State<MainScreen> {
               currentIndex = index;
             });
           },
-          destinations: MainScreen.navigation,
+          destinations: <Widget>[
+            NavigationDestination(
+              selectedIcon: const Icon(
+                Icons.cottage_outlined,
+                color: AppColors.paragraph,
+              ),
+              icon: const Icon(
+                Icons.cottage_outlined,
+                color: AppColors.paragraph,
+              ),
+              label: home_screen.home_screen_title_nav_bar.tr(),
+            ),
+            // NavigationDestination(
+            //   selectedIcon: Icon(
+            //     Icons.art_track_outlined,
+            //     color: AppColors.paragraph,
+            //   ),
+            //   icon: Icon(
+            //     Icons.art_track_outlined,
+            //     color: AppColors.paragraph,
+            //   ),
+            //   label: 'Resources',
+            // ),
+            // NavigationDestination(
+            //   selectedIcon: Icon(
+            //     Icons.home_repair_service_outlined,
+            //     color: AppColors.paragraph,
+            //   ),
+            //   icon: Icon(
+            //     Icons.home_repair_service_outlined,
+            //     color: AppColors.paragraph,
+            //   ),
+            //   label: 'Toolbox',
+            // ),
+            NavigationDestination(
+              selectedIcon: const Icon(
+                Icons.account_circle_outlined,
+                color: AppColors.paragraph,
+              ),
+              icon: const Icon(
+                Icons.account_circle_outlined,
+                color: AppColors.paragraph,
+              ),
+              label: account_screen.account_screen_title.tr(),
+            ),
+          ],
+          //MainScreen.navigation,
         ),
       ),
     );
