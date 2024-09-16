@@ -72,7 +72,13 @@ class NetworkService {
       return Options(
         headers: {
           'Authorization': 'Bearer ${di<PrefsService>().user.get()}',
-          'lang': _prefsService.locale.get(),
+          'accept-language': _prefsService.locale.get(),
+        },
+      );
+    } else {
+      return Options(
+        headers: {
+          'accept-language': _prefsService.locale.get(),
         },
       );
     }
