@@ -65,7 +65,7 @@ Column customTextFeild({
         obscureText: obscureText,
         maxLength: maxLength,
         controller: controller,
-        cursorColor: AppColors.white,
+        cursorColor: AppColors.primary,
         validator: validator,
         maxLines: lines,
         keyboardType: keyboardType,

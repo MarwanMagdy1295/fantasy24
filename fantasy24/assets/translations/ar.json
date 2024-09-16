@@ -1,6 +1,6 @@
 {
   "general": {
-    "app_name": "Next Match"
+    "app_name": "Fantacy Club"
   },
   "signup_screen": {
     "signup": "انشاء حساب",
@@ -24,7 +24,8 @@
     "email": "البريد الالكتروني",
     "password": "كلمة المرور",
     "please_enter_your_email": "من فضلك أدخل البريد الالكتروني",
-    "please_enter_your_password": "من فضلك أدخل كلمة المرور"
+    "please_enter_your_password": "من فضلك أدخل كلمة المرور",
+    "email_validation": "البريد الالكتروني غير صالح"
   },
   "forget_password_screen": {
     "forget_password": "نسيت كلمة المرور؟",
@@ -110,5 +111,10 @@
     "make_transfer": "Make Transfer",
     "reject_transfer": "Reject transfer",
     "more_transfers": "More transfers"
+  },
+  "bottom_sheet": {
+    "gw": "الجولة",
+    "next_game_diff": "المباراة القادمة وصعوبتها",
+    "points": "النقاط"
   }
 }

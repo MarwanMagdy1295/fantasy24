@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -155,7 +156,7 @@ class SignUpScreen extends StatelessWidget {
                           controller: cubit.emailController,
                           title: signup_screen.email.tr(),
                           isTitileAviable: true,
-                          hint: 'example@gmail.com',
+                          hint: 'example@example.com',
                           hintStyle: AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
@@ -187,6 +188,9 @@ class SignUpScreen extends StatelessWidget {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return signup_screen.please_enter_your_email.tr();
+                            }
+                            if (!EmailValidator.validate(value)) {
+                              return signin_screen.email_validation.tr();
                             }
                             // else if (RegExp(
                             //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')

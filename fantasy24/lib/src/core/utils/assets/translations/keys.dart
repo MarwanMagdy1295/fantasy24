@@ -28,6 +28,7 @@ class signin_screen {
   static const String email = "signin_screen.email";
   static const String password = "signin_screen.password";
   static const String please_enter_your_email = "signin_screen.please_enter_your_email";
+  static const String email_validation = "signin_screen.email_validation";
   static const String please_enter_your_password = "signin_screen.please_enter_your_password";
 }
 
@@ -128,5 +129,11 @@ class ai_transfer_screen {
   static const String make_transfer = "ai_transfer_screen.make_transfer";
   static const String reject_transfer = "ai_transfer_screen.reject_transfer";
   static const String more_transfers = "ai_transfer_screen.more_transfers";
+}
+
+class bottom_sheet {
+  static const String gw = "bottom_sheet.gw";
+  static const String next_game_diff = "bottom_sheet.next_game_diff";
+  static const String points = "bottom_sheet.points";
 }
 

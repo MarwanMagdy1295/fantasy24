@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -129,6 +130,9 @@ class PremiereLeagueIdScreen extends StatelessWidget {
                               return premiere_league_id_screen
                                   .please_enter_your_email
                                   .tr();
+                            }
+                            if (!EmailValidator.validate(value)) {
+                              return signin_screen.email_validation.tr();
                             }
                             return null;
                           },

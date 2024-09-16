@@ -1,6 +1,6 @@
 {
   "general": {
-    "app_name": "Next Match"
+    "app_name": "Fantacy Club"
   },
   "signup_screen": {
     "signup": "Sign Up",
@@ -18,12 +18,13 @@
   "signin_screen": {
     "signin": "Sign In",
     "signup": "Sign Up",
-    "signin_title": "Welcome TO NEXT MATCH",
-    "signin_sub_title": "Welcome back to Next Match",
+    "signin_title": "FANTASY CLUB",
+    "signin_sub_title": "Welcome back",
     "forgot_password": "Forgot password?",
     "email": "Email",
     "password": "Password",
     "please_enter_your_email": "Please Enter Your Email",
+    "email_validation": "Email Not Valid",
     "please_enter_your_password": "Please Enter Your Password"
   },
   "forget_password_screen": {
@@ -112,5 +113,10 @@
     "make_transfer": "Make Transfer",
     "reject_transfer": "Reject transfer",
     "more_transfers": "More transfers"
+  },
+  "bottom_sheet": {
+    "gw":"GW",
+    "next_game_diff":"Next Game & Diff",
+    "points":"Points"
   }
 }

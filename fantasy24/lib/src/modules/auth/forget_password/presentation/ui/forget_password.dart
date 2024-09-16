@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -119,6 +120,9 @@ class ForgetPassword extends StatelessWidget {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return signin_screen.please_enter_your_email.tr();
+                            }
+                            if (!EmailValidator.validate(value)) {
+                              return signin_screen.email_validation.tr();
                             }
                             // else if (RegExp(
                             //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')

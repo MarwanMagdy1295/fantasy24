@@ -15,6 +15,7 @@ import 'package:next_match/src/modules/auth/signup/presentation/ui/signup_screen
 import 'package:next_match/widget/custom_button.dart';
 import 'package:next_match/widget/custom_text_form_field.dart';
 import 'package:next_match/widget/loading_widget.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -157,7 +158,7 @@ class LoginScreen extends StatelessWidget {
                           controller: cubit.emailController,
                           title: signin_screen.email.tr(),
                           isTitileAviable: true,
-                          hint: 'example@gmail.com',
+                          hint: 'example@example.com',
                           hintStyle: AppTheme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.paragraph,
                             fontWeight: FontWeight.w500,
@@ -194,6 +195,9 @@ class LoginScreen extends StatelessWidget {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return signin_screen.please_enter_your_email.tr();
+                            }
+                            if (!EmailValidator.validate(value)) {
+                              return signin_screen.email_validation.tr();
                             }
                             //  else if (RegExp(
                             //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
