@@ -1,4 +1,4 @@
-package com.example.fantasy24
+package com.nextmatch.fantasyclub
 
 import io.flutter.embedding.android.FlutterActivity
 
