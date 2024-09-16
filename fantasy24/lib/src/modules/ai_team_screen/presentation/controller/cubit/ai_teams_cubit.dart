@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:next_match/src/core/api/error_handler.dart';
+import 'package:next_match/src/core/utils/app_colors.dart';
 import 'package:next_match/src/modules/ai_team_screen/data/model/ai_teams_model.dart';
+import 'package:next_match/src/modules/ai_team_screen/data/model/player_model.dart';
 import 'package:next_match/src/modules/ai_team_screen/data/repositories/ai_teams_screen_repository.dart';
 import 'package:next_match/src/modules/ai_team_screen/presentation/controller/cubit/ai_teams_state.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
@@ -18,6 +21,7 @@ class AiTeamsCubit extends BaseCubit<AiTeamsState>
         super(AiTeamsInitial());
 
   bool isLoading = false;
+  bool isLoadingInfo = false;
   bool isfailed = false;
   List<PlayerData>? playersListData = [];
   List<PlayerData>? defenderPlayers = [];
@@ -27,6 +31,7 @@ class AiTeamsCubit extends BaseCubit<AiTeamsState>
   PlayerData? goolKeeperPlayer;
   String? eventId = '';
   AiTeamsModel? res;
+  Player? playerInfo;
 
   Future<void> getFormationData() async {
     isLoading = true;
@@ -76,5 +81,47 @@ class AiTeamsCubit extends BaseCubit<AiTeamsState>
       }
     });
     return teamName;
+  }
+
+  Future<void> getPlayerInfo({String? playerId}) async {
+    isLoadingInfo = true;
+    emit(AiTeamsLoading());
+    PlayerModel? res;
+    await _aiTeamsScreenRepository.playerInfo(playerId: playerId).then((value) {
+      res = value;
+      playerInfo = res?.player;
+      isLoadingInfo = false;
+      emit(AiTeamsLoading());
+    }).catchError((onError) {
+      isLoadingInfo = false;
+      emit(AiTeamsLoading());
+      log('login error=>  $onError');
+      if (onError is SingleMessageResponseErrorModel) {
+        customToast(onError.message ?? '');
+      }
+    });
+  }
+
+  Color difColor(PlayerPrediction prediction) {
+    Color difColor = AppColors.secondryLighter;
+
+    switch (prediction.event?.fixtures?[0].homeTeam?.id == playerInfo?.teamId
+        ? prediction.event?.fixtures![0].awayTeamDifficulty
+        : prediction.event?.fixtures?[0].homeTeamDifficulty) {
+      case 1:
+        difColor = AppColors.secondryLighter;
+      case 2:
+        difColor = AppColors.secondry200;
+      case 3:
+        difColor = AppColors.warning50;
+      case 4:
+        difColor = AppColors.warning100;
+      case 5:
+        difColor = AppColors.warning200;
+        break;
+      default:
+        difColor = AppColors.secondryLighter;
+    }
+    return difColor;
   }
 }

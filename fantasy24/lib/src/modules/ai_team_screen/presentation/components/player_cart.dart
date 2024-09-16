@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_match/src/core/utils/app_colors.dart';
 import 'package:next_match/src/core/utils/app_theme.dart';
 import 'package:next_match/src/modules/ai_team_screen/data/model/ai_teams_model.dart';
+import 'package:next_match/src/modules/ai_team_screen/presentation/components/custom_bottom_sheet_player_info.dart';
 import 'package:next_match/src/modules/ai_team_screen/presentation/controller/cubit/ai_teams_cubit.dart';
-import 'package:next_match/src/modules/my_team_screen/presentation/components/custom_bottom_sheet_body.dart';
 
 class AiTeamPlayerCard extends StatelessWidget {
   final EdgeInsetsGeometry margin;
@@ -22,7 +22,7 @@ class AiTeamPlayerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        customBottomSheetBody(context);
+        customBottomSheetPlayerInfo(context, playerData?.playerId);
       },
       child: Container(
         margin: margin,

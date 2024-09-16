@@ -242,7 +242,9 @@ class MyTeamScreen extends StatelessWidget {
                                             ],
                                           ),
                                           Text(
-                                            '${cubit.myTeamModel!.data![0].summaryOverallRank!.toString()} pts',
+                                            cubit.myTeamModel!.data![0]
+                                                .summaryOverallRank!
+                                                .toString(),
                                             style: AppTheme
                                                 .textTheme.displayLarge
                                                 ?.copyWith(
@@ -289,7 +291,9 @@ class MyTeamScreen extends StatelessWidget {
                                             ],
                                           ),
                                           Text(
-                                            '${cubit.myTeamModel!.data![0].summaryEventRank!.toString()} pts',
+                                            cubit.myTeamModel!.data![0]
+                                                .summaryEventRank!
+                                                .toString(),
                                             style: AppTheme
                                                 .textTheme.displayLarge
                                                 ?.copyWith(

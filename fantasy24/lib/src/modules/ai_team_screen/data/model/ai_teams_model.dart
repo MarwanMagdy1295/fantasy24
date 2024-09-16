@@ -79,6 +79,7 @@ class Player {
   String? photo;
   Team? team;
   List<PlayerPrediction>? playerPredictions;
+  PlayerStats? playerStats;
 
   Player({
     this.id,
@@ -91,6 +92,7 @@ class Player {
     this.photo,
     this.team,
     this.playerPredictions,
+    this.playerStats,
   });
 
   factory Player.fromJson(Map<String, dynamic> json) => Player(
@@ -105,6 +107,9 @@ class Player {
         team: Team.fromJson(json["team"]),
         playerPredictions: List<PlayerPrediction>.from(
             json["playerPredictions"].map((x) => PlayerPrediction.fromJson(x))),
+        playerStats: json["playerStats"] == null
+            ? null
+            : PlayerStats.fromJson(json["playerStats"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -119,5 +124,70 @@ class Player {
         "team": team!.toJson(),
         "playerPredictions":
             List<dynamic>.from(playerPredictions!.map((x) => x.toJson())),
+        "playerStats": playerStats!.toJson(),
+      };
+}
+
+class PlayerStats {
+  int? goalsScored;
+  int? assists;
+  int? cleanSheets;
+  int? bonus;
+  double? bps;
+  String? influence;
+  String? creativity;
+  String? threat;
+  String? ictIndex;
+  String? selectedByPercent;
+  String? form;
+  int? eventPoints;
+  int? totalPoints;
+
+  PlayerStats({
+    this.goalsScored,
+    this.assists,
+    this.cleanSheets,
+    this.bonus,
+    this.bps,
+    this.influence,
+    this.creativity,
+    this.threat,
+    this.ictIndex,
+    this.selectedByPercent,
+    this.form,
+    this.eventPoints,
+    this.totalPoints,
+  });
+
+  factory PlayerStats.fromJson(Map<String, dynamic> json) => PlayerStats(
+        goalsScored: json["goals_scored"],
+        assists: json["assists"],
+        cleanSheets: json["clean_sheets"],
+        bonus: json["bonus"],
+        bps: json["bps"],
+        influence: json["influence"],
+        creativity: json["creativity"],
+        threat: json["threat"],
+        ictIndex: json["ict_index"],
+        selectedByPercent: json["selected_by_percent"],
+        form: json["form"],
+        eventPoints: json["event_points"],
+        totalPoints: json["total_points"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "goals_scored": goalsScored,
+        "assists": assists,
+        "clean_sheets": cleanSheets,
+        "bonus": bonus,
+        "bps": bps,
+        "influence": influence,
+        "creativity": creativity,
+        "threat": threat,
+        "ict_index": ictIndex,
+        "selected_by_percent": selectedByPercent,
+        "form": form,
+        "event_points": eventPoints,
+        "total_points": totalPoints,
       };
 }
