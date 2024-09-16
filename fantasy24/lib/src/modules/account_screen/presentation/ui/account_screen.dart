@@ -80,7 +80,7 @@ class AccountScreen extends StatelessWidget {
                           //   ),
                           // ),
                           title: Text(
-                            cubit.user!.email!,
+                            cubit.user?.email ?? '',
                             style: AppTheme.textTheme.headlineSmall?.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColors.paragraph,
