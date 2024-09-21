@@ -40,14 +40,26 @@ class $AssetsImagesGen {
   /// File path: assets/images/Playground.svg
   SvgGenImage get playground => const SvgGenImage('assets/images/Playground.svg');
 
+  /// File path: assets/images/app_icon.png
+  AssetGenImage get appIcon => const AssetGenImage('assets/images/app_icon.png');
+
   /// File path: assets/images/avatar_image.png
   AssetGenImage get avatarImage => const AssetGenImage('assets/images/avatar_image.png');
+
+  /// File path: assets/images/ball.svg
+  SvgGenImage get ball => const SvgGenImage('assets/images/ball.svg');
+
+  /// File path: assets/images/clipping _content.png
+  AssetGenImage get clippingContent => const AssetGenImage('assets/images/clipping _content.png');
 
   /// File path: assets/images/fpl_id.png
   AssetGenImage get fplId => const AssetGenImage('assets/images/fpl_id.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/magic_wand.svg
+  SvgGenImage get magicWand => const SvgGenImage('assets/images/magic_wand.svg');
 
   /// File path: assets/images/splash_screen.png
   AssetGenImage get splashScreenPng => const AssetGenImage('assets/images/splash_screen.png');
@@ -56,7 +68,19 @@ class $AssetsImagesGen {
   SvgGenImage get splashScreenSvg => const SvgGenImage('assets/images/splash_screen.svg');
 
   /// List of all assets
-  List<dynamic> get values => [playerImage, playground, avatarImage, fplId, logo, splashScreenPng, splashScreenSvg];
+  List<dynamic> get values => [
+        playerImage,
+        playground,
+        appIcon,
+        avatarImage,
+        ball,
+        clippingContent,
+        fplId,
+        logo,
+        magicWand,
+        splashScreenPng,
+        splashScreenSvg
+      ];
 }
 
 class $AssetsTranslationsGen {

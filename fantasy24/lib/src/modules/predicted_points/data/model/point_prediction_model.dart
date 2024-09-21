@@ -59,6 +59,7 @@ class PredictionPointData {
   String? photo;
   Team? team;
   List<PlayerPrediction>? playerPredictions;
+  List<PlayerPrediction>? selectedPlayerPredictions;
 
   PredictionPointData({
     this.id,

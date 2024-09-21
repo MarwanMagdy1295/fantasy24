@@ -20,9 +20,10 @@ class PointPredictionCubit extends BaseCubit<PointPredictionState>
         super(PointPredictionInitial());
 
   bool isLoading = false;
+  bool isScrollLoading = false;
   PointPredictionModel? pointPredictionModel;
   List<PredictionPointData>? predictionPointsList = [];
-  List<PlayerPrediction>? playerPredictionsList;
+  // List<PlayerPrediction>? playerPredictionsList;
   ScrollController? verticalController;
   double? lowPice;
   double? highPric;
@@ -43,7 +44,7 @@ class PointPredictionCubit extends BaseCubit<PointPredictionState>
           verticalController!.position.pixels) {
         if (pageNumber < pointPredictionModel!.totalPages!) {
           pageNumber++;
-          isLoading = true;
+          isScrollLoading = true;
           emit(PointPredictionLoading());
           await _pointPredictionScreenRepository
               .predictionPointList(
@@ -61,18 +62,18 @@ class PointPredictionCubit extends BaseCubit<PointPredictionState>
             pointPredictionModel = value;
             predictionPointsList
                 ?.addAll(pointPredictionModel!.predictionPointList!);
-            pointPredictionModel?.predictionPointList?.forEach((element) {
+            predictionPointsList?.forEach((element) {
               if (element.playerPredictions!.length > 3) {
-                element.playerPredictions!.reversed;
-                List<PlayerPrediction>? list =
-                    element.playerPredictions!.sublist(0, 2);
-                playerPredictionsList?.addAll(list);
+                final data = element.playerPredictions!.reversed.toList();
+                List<PlayerPrediction>? list = data.sublist(0, 3);
+                element.selectedPlayerPredictions = list;
+                // playerPredictionsList?.addAll(list);
               }
             });
-            isLoading = false;
+            isScrollLoading = false;
             emit(PointPredictionLoading());
           }).catchError((onError) {
-            isLoading = false;
+            isScrollLoading = false;
             emit(PointPredictionLoading());
             log('point prediction error=>  $onError');
             if (onError is SingleMessageResponseErrorModel) {
@@ -102,10 +103,10 @@ class PointPredictionCubit extends BaseCubit<PointPredictionState>
         predictionPointsList = pointPredictionModel?.predictionPointList;
         pointPredictionModel?.predictionPointList?.forEach((element) {
           if (element.playerPredictions!.length > 3) {
-            element.playerPredictions!.reversed;
-            List<PlayerPrediction>? list =
-                element.playerPredictions!.sublist(0, 3);
-            playerPredictionsList = list;
+            final data = element.playerPredictions!.reversed.toList();
+            List<PlayerPrediction>? list = data.sublist(0, 3);
+            element.selectedPlayerPredictions = list;
+            // playerPredictionsList = list;
           }
         });
         isLoading = false;

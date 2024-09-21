@@ -27,13 +27,14 @@ class OtpScreenCubit extends BaseCubit<OtpScreenState>
   bool fromSignup = false;
   UserModel? user;
 
-  void isButtonDisabled(BuildContext context) {
-    if (controller.text.isNotEmpty) {
+  void isButtonDisabled(BuildContext context, String? value) {
+    if (value != null && value.length == 5) {
       isDisabled = false;
+      emit(OtpScreenLoading());
     } else {
       isDisabled = true;
+      emit(OtpScreenLoading());
     }
-    emit(OtpScreenLoading());
   }
 
   Future<void> postFBLData(BuildContext context) async {

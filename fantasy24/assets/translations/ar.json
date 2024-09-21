@@ -2,6 +2,13 @@
   "general": {
     "app_name": "Fantacy Club"
   },
+  "on_boarding_screens": {
+    "on_boarding_screens_title": "فانتسي ذكي باللغة العربية ",
+    "on_boarding_screens_sub_title": "استخدم قوة الذكاء الاصطناعي لتكوين فريقك المثالي والفوز في ميني ليج.",
+    "change_langyage": "يمكنك تغيير اللغة من خلال حسابك في اي وقت",
+    "create_a_free_account": "انشاء حساب مجاني",
+    "signin": "تسجيل الدخول"
+  },
   "signup_screen": {
     "signup": "انشاء حساب",
     "signup_title": "أنشئ حسابا مجانيا",
@@ -12,7 +19,7 @@
     "Repeat_password": "تأكيد كلمة المرور",
     "please_enter_your_email": "من فضلك أدخل البريد الالكتروني",
     "please_enter_your_password": "من فضلك أدخل كلمة المرور",
-    "password_validation": "كلمة المرور يجب ان تكون ٨ حروف او اكثر",
+    "password_validation": " كلمة الرور يجب ان تكون ٨ حروف او اكثر و علي الافل حرف كبير، حرف صغير، حرف خاص، رقم",
     "password_not_match": "كلمة المرور غير متطابقة"
   },
   "signin_screen": {
@@ -100,7 +107,13 @@
     "substitutes": "البدلاء"
   },
   "point_prediction_screen": {
-    "point_prediction_screen_title": "تنبؤات النقاط"
+    "point_prediction_screen_title": "تنبؤات النقاط",
+    "filters": "فلترة",
+    "price_range": "نطاق السعر",
+    "game_week_range": "نطاق الجولات",
+    "sort_by": "الترتيب",
+    "player_position": "موقع اللاعب",
+    "done": "تم"
   },
   "ai_team_screen": {
     "ai_team_screen_title": "فرق الذكاء الاصطناعي",
@@ -115,6 +128,11 @@
   "bottom_sheet": {
     "gw": "الجولة",
     "next_game_diff": "المباراة القادمة وصعوبتها",
-    "points": "النقاط"
+    "points": "النقاط",
+    "owner_ship": "نسبة الملكية",
+    "clean_sheets": "الشباك النظيفة",
+    "goals": "الأهداف المسجلة",
+    "assists": "أسيست",
+    "form": "الأداء الحالي"
   }
 }

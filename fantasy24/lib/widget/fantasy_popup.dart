@@ -12,58 +12,61 @@ Future<void> fantasyPopup(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
-      return AlertDialog(
-        backgroundColor: AppColors.white,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0.r)),
-        content: SizedBox(
-          height: MediaQuery.sizeOf(context).height * .34.h,
-          width: MediaQuery.sizeOf(context).width * .9.w,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.warning_amber_rounded,
-                color: AppColors.primary,
-                size: 80.0,
-              ),
-              Constatnts.height20,
-              Text(
-                massege,
-                textAlign: TextAlign.center,
-                style: AppTheme.textTheme.displayMedium
-                    ?.copyWith(fontSize: 20.0.sp),
-              ),
-              Constatnts.height40,
-              customButton(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PremiereLeagueIdScreen(),
-                      ));
-                },
-                title: 'Verify',
-                titleStyle: AppTheme.textTheme.displayMedium?.copyWith(
-                  color: AppColors.white,
-                  fontSize: 16.0.sp,
+      return PopScope(
+        canPop: false,
+        child: AlertDialog(
+          backgroundColor: AppColors.white,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0.r)),
+          content: SizedBox(
+            height: MediaQuery.sizeOf(context).height * .34.h,
+            width: MediaQuery.sizeOf(context).width * .9.w,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.warning_amber_rounded,
+                  color: AppColors.primary,
+                  size: 80.0,
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0.r),
+                Constatnts.height20,
+                Text(
+                  massege,
+                  textAlign: TextAlign.center,
+                  style: AppTheme.textTheme.displayMedium
+                      ?.copyWith(fontSize: 20.0.sp),
                 ),
-                boxShadow: [
-                  const BoxShadow(
-                    color: AppColors.shadow,
-                    blurRadius: 0.0,
-                    spreadRadius: 0.0,
-                    offset: Offset(0, 4),
+                Constatnts.height40,
+                customButton(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PremiereLeagueIdScreen(),
+                        ));
+                  },
+                  title: 'Verify',
+                  titleStyle: AppTheme.textTheme.displayMedium?.copyWith(
+                    color: AppColors.white,
+                    fontSize: 16.0.sp,
                   ),
-                ],
-                backgroundColor: AppColors.primary,
-                padding: const EdgeInsets.all(14.0),
-              ),
-              Constatnts.height20,
-            ],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0.r),
+                  ),
+                  boxShadow: [
+                    const BoxShadow(
+                      color: AppColors.shadow,
+                      blurRadius: 0.0,
+                      spreadRadius: 0.0,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                  backgroundColor: AppColors.primary,
+                  padding: const EdgeInsets.all(14.0),
+                ),
+                Constatnts.height20,
+              ],
+            ),
           ),
         ),
       );

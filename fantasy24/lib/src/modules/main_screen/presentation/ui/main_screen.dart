@@ -77,80 +77,84 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: page[currentIndex],
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
-              (Set<MaterialState> states) =>
-                  states.contains(MaterialState.selected)
-                      ? AppTheme.textTheme.bodyMedium!.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.schemeBlack,
-                        )
-                      : AppTheme.textTheme.bodyLarge!.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.paragraph,
-                        )),
-        ),
-        child: NavigationBar(
-          animationDuration: const Duration(seconds: 1),
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-          selectedIndex: currentIndex,
-          height: 60.0.h,
-          elevation: 0,
-          backgroundColor: AppColors.background,
-          indicatorColor: AppColors.schemeSecondary,
-          onDestinationSelected: (int index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          destinations: <Widget>[
-            NavigationDestination(
-              selectedIcon: const Icon(
-                Icons.cottage_outlined,
-                color: AppColors.paragraph,
+      bottomNavigationBar: Localizations.override(
+        context: context,
+        locale: context.locale,
+        child: NavigationBarTheme(
+          data: NavigationBarThemeData(
+            labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
+                (Set<MaterialState> states) =>
+                    states.contains(MaterialState.selected)
+                        ? AppTheme.textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.schemeBlack,
+                          )
+                        : AppTheme.textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.paragraph,
+                          )),
+          ),
+          child: NavigationBar(
+            animationDuration: const Duration(seconds: 1),
+            labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+            selectedIndex: currentIndex,
+            height: 60.0.h,
+            elevation: 0,
+            backgroundColor: AppColors.background,
+            indicatorColor: AppColors.schemeSecondary,
+            onDestinationSelected: (int index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            destinations: <Widget>[
+              NavigationDestination(
+                selectedIcon: const Icon(
+                  Icons.cottage_outlined,
+                  color: AppColors.paragraph,
+                ),
+                icon: const Icon(
+                  Icons.cottage_outlined,
+                  color: AppColors.paragraph,
+                ),
+                label: home_screen.home_screen_title_nav_bar.tr(),
               ),
-              icon: const Icon(
-                Icons.cottage_outlined,
-                color: AppColors.paragraph,
+              // NavigationDestination(
+              //   selectedIcon: Icon(
+              //     Icons.art_track_outlined,
+              //     color: AppColors.paragraph,
+              //   ),
+              //   icon: Icon(
+              //     Icons.art_track_outlined,
+              //     color: AppColors.paragraph,
+              //   ),
+              //   label: 'Resources',
+              // ),
+              // NavigationDestination(
+              //   selectedIcon: Icon(
+              //     Icons.home_repair_service_outlined,
+              //     color: AppColors.paragraph,
+              //   ),
+              //   icon: Icon(
+              //     Icons.home_repair_service_outlined,
+              //     color: AppColors.paragraph,
+              //   ),
+              //   label: 'Toolbox',
+              // ),
+              NavigationDestination(
+                selectedIcon: const Icon(
+                  Icons.account_circle_outlined,
+                  color: AppColors.paragraph,
+                ),
+                icon: const Icon(
+                  Icons.account_circle_outlined,
+                  color: AppColors.paragraph,
+                ),
+                label: account_screen.account_screen_title.tr(),
               ),
-              label: home_screen.home_screen_title_nav_bar.tr(),
-            ),
-            // NavigationDestination(
-            //   selectedIcon: Icon(
-            //     Icons.art_track_outlined,
-            //     color: AppColors.paragraph,
-            //   ),
-            //   icon: Icon(
-            //     Icons.art_track_outlined,
-            //     color: AppColors.paragraph,
-            //   ),
-            //   label: 'Resources',
-            // ),
-            // NavigationDestination(
-            //   selectedIcon: Icon(
-            //     Icons.home_repair_service_outlined,
-            //     color: AppColors.paragraph,
-            //   ),
-            //   icon: Icon(
-            //     Icons.home_repair_service_outlined,
-            //     color: AppColors.paragraph,
-            //   ),
-            //   label: 'Toolbox',
-            // ),
-            NavigationDestination(
-              selectedIcon: const Icon(
-                Icons.account_circle_outlined,
-                color: AppColors.paragraph,
-              ),
-              icon: const Icon(
-                Icons.account_circle_outlined,
-                color: AppColors.paragraph,
-              ),
-              label: account_screen.account_screen_title.tr(),
-            ),
-          ],
-          //MainScreen.navigation,
+            ],
+            //MainScreen.navigation,
+          ),
         ),
       ),
     );

@@ -115,28 +115,32 @@ Future<dynamic> customBottomSheetPlayerInfo(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Points',
+                              bottom_sheet.points.tr(),
                               style: AppTheme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.paragraph,
                               ),
                             ),
                             Text(
-                              '153',
+                              cubit.playerInfo?.playerStats?.totalPoints
+                                      .toString() ??
+                                  '',
                               style: AppTheme.textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Constatnts.height20,
                             Text(
-                              'Goals',
+                              bottom_sheet.goals.tr(),
                               style: AppTheme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.paragraph,
                               ),
                             ),
                             Text(
-                              '2',
+                              cubit.playerInfo?.playerStats?.goalsScored
+                                      .toString() ??
+                                  '',
                               style: AppTheme.textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -147,28 +151,30 @@ Future<dynamic> customBottomSheetPlayerInfo(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Ownership',
+                              bottom_sheet.owner_ship.tr(),
                               style: AppTheme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.paragraph,
                               ),
                             ),
                             Text(
-                              '18.5%',
+                              '${cubit.playerInfo?.playerStats?.creativity ?? ''}%',
                               style: AppTheme.textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Constatnts.height20,
                             Text(
-                              'Assists',
+                              bottom_sheet.assists.tr(),
                               style: AppTheme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.paragraph,
                               ),
                             ),
                             Text(
-                              '5',
+                              cubit.playerInfo?.playerStats?.assists
+                                      .toString() ??
+                                  '',
                               style: AppTheme.textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -179,28 +185,30 @@ Future<dynamic> customBottomSheetPlayerInfo(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Clean sheets',
+                              bottom_sheet.clean_sheets.tr(),
                               style: AppTheme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.paragraph,
                               ),
                             ),
                             Text(
-                              '15',
+                              cubit.playerInfo?.playerStats?.cleanSheets
+                                      .toString() ??
+                                  '',
                               style: AppTheme.textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Constatnts.height20,
                             Text(
-                              'Form',
+                              bottom_sheet.form.tr(),
                               style: AppTheme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.paragraph,
                               ),
                             ),
                             Text(
-                              '10',
+                              cubit.playerInfo?.playerStats?.form ?? '',
                               style: AppTheme.textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),

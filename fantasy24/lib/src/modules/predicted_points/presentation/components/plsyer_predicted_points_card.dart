@@ -70,10 +70,15 @@ class PlayerPredictedPointCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '${predictionPoint.firstName!} ${predictionPoint.secondName!}',
-                        style: AppTheme.textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.w500,
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 0.48.w,
+                        child: Text(
+                          '${predictionPoint.firstName!} ${predictionPoint.secondName!}',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTheme.textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                       Text(
@@ -105,7 +110,7 @@ class PlayerPredictedPointCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ...predictionCubit.playerPredictionsList!.map(
+              ...predictionPoint.selectedPlayerPredictions!.map(
                 (playerPrediction) => Column(
                   children: [
                     Text(

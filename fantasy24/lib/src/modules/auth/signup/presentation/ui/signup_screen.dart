@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -93,14 +94,16 @@ class SignUpScreen extends StatelessWidget {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          const LoginScreen(),
-                                    ),
-                                    (_) => false,
-                                  );
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                      SecondPageRoute(), (_) => false);
+                                  // Navigator.pushAndRemoveUntil(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (BuildContext context) =>
+                                  //         const LoginScreen(),
+                                  //   ),
+                                  //   (_) => false,
+                                  // );
                                 },
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
@@ -404,5 +407,27 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class SecondPageRoute extends CupertinoPageRoute {
+  SecondPageRoute()
+      : super(builder: (BuildContext context) => const LoginScreen());
+
+  // OPTIONAL IF YOU WISH TO HAVE SOME EXTRA ANIMATION WHILE ROUTING
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return Container(
+      color: AppColors.background,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: Offset(-4, 0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: const LoginScreen(),
+      ),
+    );
+    // FadeTransition(opacity: animation, child: const LoginScreen());
   }
 }

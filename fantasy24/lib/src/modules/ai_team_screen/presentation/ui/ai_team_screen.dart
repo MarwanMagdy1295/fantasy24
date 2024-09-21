@@ -182,7 +182,7 @@ class AiTeamScreen extends StatelessWidget {
                                       fit: BoxFit.fill,
                                       height:
                                           MediaQuery.sizeOf(context).height *
-                                              .76.h,
+                                              .7.h,
                                     ),
                                     Column(
                                       children: [
@@ -202,6 +202,7 @@ class AiTeamScreen extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
+                                            Constatnts.height16,
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 6.0.w),
@@ -225,7 +226,6 @@ class AiTeamScreen extends StatelessWidget {
                                                                 .only(
                                                                     start:
                                                                         10.0.w,
-                                                                    end: 10.0.w,
                                                                     top:
                                                                         14.0.h),
                                                       ),
@@ -234,6 +234,7 @@ class AiTeamScreen extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            Constatnts.height16,
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 6.0.w),
@@ -257,7 +258,6 @@ class AiTeamScreen extends StatelessWidget {
                                                                 .only(
                                                                     start:
                                                                         10.0.w,
-                                                                    end: 10.0.w,
                                                                     top:
                                                                         14.0.h),
                                                       ),
@@ -266,6 +266,7 @@ class AiTeamScreen extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            Constatnts.height16,
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 6.0.w),
@@ -289,7 +290,6 @@ class AiTeamScreen extends StatelessWidget {
                                                                 .only(
                                                                     start:
                                                                         10.0.w,
-                                                                    end: 10.0.w,
                                                                     top:
                                                                         14.0.h),
                                                       ),

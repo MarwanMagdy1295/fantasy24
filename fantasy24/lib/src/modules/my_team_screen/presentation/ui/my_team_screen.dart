@@ -26,7 +26,7 @@ class MyTeamScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) =>
-          MyTeamCubit(myTeamScreenRepository: di())..getUserData(context),
+          MyTeamCubit(myTeamScreenRepository: di()),
       lazy: true,
       child: Builder(
         builder: (context) {
@@ -315,7 +315,8 @@ class MyTeamScreen extends StatelessWidget {
                               Assets.images.playground.svg(
                                 fit: BoxFit.fill,
                                 height:
-                                    MediaQuery.sizeOf(context).height * .76.h,
+                                    MediaQuery.sizeOf(context).height * .7.h,
+                                width: MediaQuery.sizeOf(context).width.w,
                               ),
                               myTeamModel == null
                                   ? SizedBox(
@@ -349,6 +350,7 @@ class MyTeamScreen extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
+                                            Constatnts.height16,
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 16.0.w),
@@ -370,7 +372,6 @@ class MyTeamScreen extends StatelessWidget {
                                                                 .only(
                                                                     start:
                                                                         10.0.w,
-                                                                    end: 10.0.w,
                                                                     top:
                                                                         14.0.h),
                                                       ),
@@ -379,6 +380,7 @@ class MyTeamScreen extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            Constatnts.height16,
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 16.0.w),
@@ -400,7 +402,6 @@ class MyTeamScreen extends StatelessWidget {
                                                                 .only(
                                                                     start:
                                                                         10.0.w,
-                                                                    end: 10.0.w,
                                                                     top:
                                                                         14.0.h),
                                                       ),
@@ -409,6 +410,7 @@ class MyTeamScreen extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            Constatnts.height16,
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 16.0.w),
@@ -430,7 +432,6 @@ class MyTeamScreen extends StatelessWidget {
                                                                 .only(
                                                                     start:
                                                                         10.0.w,
-                                                                    end: 10.0.w,
                                                                     top:
                                                                         14.0.h),
                                                       ),

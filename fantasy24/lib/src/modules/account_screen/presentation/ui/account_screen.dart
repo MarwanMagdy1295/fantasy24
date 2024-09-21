@@ -125,12 +125,12 @@ class AccountScreen extends StatelessWidget {
                         const Spacer(),
                         ListTile(
                           onTap: () {
+                            di<PrefsService>().user.delete();
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const LoginScreen()),
                                 (route) => false);
-                            di<PrefsService>().user.put('');
                           },
                           leading: const Icon(Icons.logout_sharp),
                           title: Text(

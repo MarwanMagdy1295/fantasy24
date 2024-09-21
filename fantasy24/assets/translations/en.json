@@ -2,6 +2,13 @@
   "general": {
     "app_name": "Fantacy Club"
   },
+  "on_boarding_screens": {
+    "on_boarding_screens_title": "ENJOY OUR AI FEATURES",
+    "on_boarding_screens_sub_title": "AI-powered fantasy football, Create your dream team and win big.",
+    "change_langyage": "You can change the language from your account anytime.",
+    "create_a_free_account": "Create a free account",
+    "signin": "Signin"
+  },
   "signup_screen": {
     "signup": "Sign Up",
     "signup_title": "CREATE A FREE ACCOUNT",
@@ -12,7 +19,7 @@
     "Repeat_password": "Repeat Password",
     "please_enter_your_email": "Please Enter Your Email",
     "please_enter_your_password": "Please Enter Your Password",
-    "password_validation": "Password Should  8 Or More Than 8 Character",
+    "password_validation": "Password Should be 8 or More Than 8 Character And At least One Upper Case, One Lower Case, One Special characters and One Number",
     "password_not_match": "Password Not Match"
   },
   "signin_screen": {
@@ -102,7 +109,13 @@
     "substitutes": "Substitutes"
   },
   "point_prediction_screen": {
-    "point_prediction_screen_title": "Point Prediction"
+    "point_prediction_screen_title": "Point Prediction",
+    "filters": "FILTERS",
+    "price_range": "Price range",
+    "game_week_range": "Game-week range",
+    "sort_by": "Sort by",
+    "player_position": "Player position",
+    "done": "Done"
   },
   "ai_team_screen": {
     "ai_team_screen_title": "AI Team",
@@ -115,8 +128,13 @@
     "more_transfers": "More transfers"
   },
   "bottom_sheet": {
-    "gw":"GW",
-    "next_game_diff":"Next Game & Diff",
-    "points":"Points"
+    "gw": "GW",
+    "next_game_diff": "Next Game & Diff",
+    "points": "Points",
+    "owner_ship": "Ownership",
+    "clean_sheets": "Clean Sheet",
+    "goals": "Goals",
+    "assists": "Assists",
+    "form": "Form"
   }
 }

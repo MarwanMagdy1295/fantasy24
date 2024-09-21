@@ -93,6 +93,8 @@ class _PointsPredectionState extends State<PointsPredection> {
                                       predictionCubit: cubit,
                                     ),
                                   ),
+                                  if (cubit.isScrollLoading)
+                                    const Center(child: LoadingWidget())
                                   // Constatnts.height10,
                                   // ListTile(
                                   //   contentPadding: EdgeInsets.zero,

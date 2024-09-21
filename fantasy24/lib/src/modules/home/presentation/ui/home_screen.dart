@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:next_match/src/app/di_service.dart';
 import 'package:next_match/src/core/utils/app_colors.dart';
 import 'package:next_match/src/core/utils/app_theme.dart';
 import 'package:next_match/src/modules/ai_team_screen/presentation/ui/ai_team_screen.dart';
@@ -10,6 +11,7 @@ import 'package:next_match/src/modules/my_team_screen/data/model/my_team_model.d
 import 'package:next_match/src/modules/my_team_screen/presentation/ui/my_team_screen.dart';
 import 'package:next_match/src/modules/predicted_points/presentation/ui/points_prediction.dart';
 import 'package:next_match/src/core/utils/assets/translations/keys.dart';
+import 'package:next_match/widget/loading_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   final MyTeamModel? myTeamModel;
@@ -41,7 +43,8 @@ class _HomeScreenState extends State<HomeScreen>
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: BlocProvider(
-          create: (BuildContext context) => HomeScreenCubit(),
+          create: (BuildContext context) =>
+              HomeScreenCubit(homeScreenRepository: di())..getUserData(context),
           lazy: true,
           child: Builder(builder: (context) {
             final cubit = context.watch<HomeScreenCubit>();
@@ -77,89 +80,105 @@ class _HomeScreenState extends State<HomeScreen>
                 //     ];
                 //   },
                 //   body:
-                Column(
+                Stack(
               children: [
-                ListTile(
-                  contentPadding: EdgeInsets.only(
-                    left: 16.0.w,
-                    right: 16.0.w,
-                  ),
-                  // leading: const Icon(
-                  //   Icons.arrow_back,
-                  //   color: AppColors.appBlack,
-                  // ),
-                  title: Text(
-                    cubit.screenTitle,
-                    style: AppTheme.textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
+                Column(
+                  children: [
+                    ListTile(
+                      contentPadding: EdgeInsets.only(
+                        left: 16.0.w,
+                        right: 16.0.w,
+                      ),
+                      // leading: const Icon(
+                      //   Icons.arrow_back,
+                      //   color: AppColors.appBlack,
+                      // ),
+                      title: Text(
+                        cubit.screenTitle,
+                        style: AppTheme.textTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      // trailing: const Icon(
+                      //   Icons.notifications_none_outlined,
+                      //   color: AppColors.appBlack,
+                      // ),
                     ),
-                  ),
-                  trailing: const Icon(
-                    Icons.notifications_none_outlined,
-                    color: AppColors.appBlack,
-                  ),
-                ),
-                TabBar(
-                  controller: tabController,
-                  isScrollable: true,
-                  indicatorColor: AppColors.transparent,
-                  dividerColor: AppColors.transparent,
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0.r),
-                    color: AppColors.appBlack,
-                  ),
-                  tabAlignment: TabAlignment.start,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0.w),
-                  indicatorPadding: EdgeInsets.symmetric(vertical: 4.0.h),
-                  overlayColor:
-                      const MaterialStatePropertyAll(AppColors.transparent),
-                  unselectedLabelColor: AppColors.appBlack,
-                  labelStyle: AppTheme.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  tabs: [
-                    Tab(
-                      icon: Text(
-                        my_team_screen.my_team_screen_title.tr(),
-                        textAlign: TextAlign.center,
+                    TabBar(
+                      controller: tabController,
+                      isScrollable: true,
+                      indicatorColor: AppColors.transparent,
+                      dividerColor: AppColors.transparent,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.0.r),
+                        color: AppColors.appBlack,
+                      ),
+                      tabAlignment: TabAlignment.start,
+                      padding: EdgeInsets.symmetric(horizontal: 16.0.w),
+                      indicatorPadding: EdgeInsets.symmetric(vertical: 4.0.h),
+                      overlayColor:
+                          const MaterialStatePropertyAll(AppColors.transparent),
+                      unselectedLabelColor: AppColors.appBlack,
+                      labelStyle: AppTheme.textTheme.bodyMedium?.copyWith(
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      tabs: [
+                        Tab(
+                          icon: Text(
+                            my_team_screen.my_team_screen_title.tr(),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        Tab(
+                          icon: Text(
+                            point_prediction_screen
+                                .point_prediction_screen_title
+                                .tr(),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        Tab(
+                          icon: Text(
+                            ai_team_screen.ai_team_screen_title.tr(),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        // const Tab(
+                        //   icon: Text(
+                        //     'AI Transfare',
+                        //     textAlign: TextAlign.center,
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        controller: tabController,
+                        children: [
+                          MyTeamScreen(myTeamModel: widget.myTeamModel),
+                          const PointsPredection(),
+                          const AiTeamScreen(),
+                          // const AiTransfer(),
+                        ],
                       ),
                     ),
-                    Tab(
-                      icon: Text(
-                        point_prediction_screen.point_prediction_screen_title
-                            .tr(),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Tab(
-                      icon: Text(
-                        ai_team_screen.ai_team_screen_title.tr(),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    // const Tab(
-                    //   icon: Text(
-                    //     'AI Transfare',
-                    //     textAlign: TextAlign.center,
-                    //   ),
-                    // ),
                   ],
+                  // ),
                 ),
-                Expanded(
-                  child: TabBarView(
-                    controller: tabController,
-                    children: [
-                      MyTeamScreen(myTeamModel: widget.myTeamModel),
-                      const PointsPredection(),
-                      const AiTeamScreen(),
-                      // const AiTransfer(),
-                    ],
+                if (cubit.isLoadingUserInfo)
+                  Container(
+                    color: AppColors.white.withOpacity(.5),
+                    width: MediaQuery.sizeOf(context).width.w,
+                    height: MediaQuery.sizeOf(context).height.h,
+                    child: SizedBox(
+                      width: MediaQuery.sizeOf(context).width * 02.w,
+                      height: MediaQuery.sizeOf(context).height * 02.h,
+                      child: const LoadingWidget(),
+                    ),
                   ),
-                ),
               ],
-              // ),
             );
           }),
         ),

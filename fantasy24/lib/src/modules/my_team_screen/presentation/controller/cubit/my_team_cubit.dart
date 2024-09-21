@@ -3,14 +3,16 @@
 import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
+import 'package:next_match/src/core/api/error_handler.dart';
 import 'package:next_match/src/core/base_cubit/base_cubit.dart';
-import 'package:next_match/src/modules/account_screen/data/model/user_model.dart';
+import 'package:next_match/src/core/utils/app_colors.dart';
 import 'package:next_match/src/modules/ai_team_screen/data/model/ai_teams_model.dart';
+import 'package:next_match/src/modules/ai_team_screen/data/model/player_model.dart';
 import 'package:next_match/src/modules/my_team_screen/data/model/my_team_model.dart';
 import 'package:next_match/src/modules/my_team_screen/data/repositories/my_teams_screen_repository.dart';
 import 'package:next_match/src/modules/my_team_screen/presentation/controller/cubit/my_team_state.dart';
 import 'package:next_match/src/modules/predicted_points/data/model/point_prediction_model.dart';
-import 'package:next_match/widget/fantasy_popup.dart';
+import 'package:next_match/widget/custom_toast.dart';
 
 class MyTeamCubit extends BaseCubit<MyTeamState>
     with
@@ -29,7 +31,8 @@ class MyTeamCubit extends BaseCubit<MyTeamState>
   List<Pick>? substitutionPlayers = [];
   Pick? goolKeeperPlayer;
   bool isLoading = false;
-  UserData? user;
+  bool isLoadingInfo = false;
+  Player? playerInfo;
 
   void formation() {
     playersList = myTeamModel?.data?[0].picks?.sublist(0, 11);
@@ -57,7 +60,6 @@ class MyTeamCubit extends BaseCubit<MyTeamState>
       }
     });
   }
-
   // Future<void> getFormationData() async {
   //   MyTeamModel? res;
   //   isLoading = true;
@@ -94,21 +96,45 @@ class MyTeamCubit extends BaseCubit<MyTeamState>
     return teamName;
   }
 
-  Future<void> getUserData(BuildContext context) async {
-    isLoading = true;
+  Future<void> getPlayerInfo({String? playerId}) async {
+    isLoadingInfo = true;
     emit(MyTeamLoading());
-    await _myTeamScreenRepository.getUserData().then((value) {
-      UserModel res = value!;
-      user = res.data;
-      isLoading = false;
+    PlayerModel? res;
+    await _myTeamScreenRepository.playerInfo(playerId: playerId).then((value) {
+      res = value;
+      playerInfo = res?.player;
+      isLoadingInfo = false;
       emit(MyTeamLoading());
-      if (!user!.isVerified!) {
-        fantasyPopup(context: context, massege: 'Please Verify Your Account');
-      }
     }).catchError((onError) {
-      isLoading = false;
+      isLoadingInfo = false;
       emit(MyTeamLoading());
-      log('user error=>  $onError');
+      log('login error=>  $onError');
+      if (onError is SingleMessageResponseErrorModel) {
+        customToast(onError.message ?? '');
+      }
     });
+  }
+
+  Color difColor(PlayerPrediction prediction) {
+    Color difColor = AppColors.secondryLighter;
+
+    switch (prediction.event?.fixtures?[0].homeTeam?.id == playerInfo?.teamId
+        ? prediction.event?.fixtures![0].awayTeamDifficulty
+        : prediction.event?.fixtures?[0].homeTeamDifficulty) {
+      case 1:
+        difColor = AppColors.secondryLighter;
+      case 2:
+        difColor = AppColors.secondry200;
+      case 3:
+        difColor = AppColors.warning50;
+      case 4:
+        difColor = AppColors.warning100;
+      case 5:
+        difColor = AppColors.warning200;
+        break;
+      default:
+        difColor = AppColors.secondryLighter;
+    }
+    return difColor;
   }
 }

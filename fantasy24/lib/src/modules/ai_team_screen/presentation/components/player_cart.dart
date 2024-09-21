@@ -26,14 +26,15 @@ class AiTeamPlayerCard extends StatelessWidget {
       },
       child: Container(
         margin: margin,
-        height: 120.0.h,
+        height: 100.0.h,
         child: Stack(
+          alignment: Alignment.topRight,
           children: [
             Align(
               alignment: Alignment.topCenter,
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
-                width: MediaQuery.sizeOf(context).width * .24.w,
+                width: MediaQuery.sizeOf(context).width * .18.w,
                 imageUrl: playerData!.player!.photo!,
                 placeholder: (context, url) => SizedBox(
                   width: 100.0.w,
@@ -51,7 +52,7 @@ class AiTeamPlayerCard extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                width: MediaQuery.sizeOf(context).width * .24.w,
+                width: MediaQuery.sizeOf(context).width * .18.w,
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(2.0.r),
@@ -73,7 +74,6 @@ class AiTeamPlayerCard extends StatelessWidget {
                         children: [
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 4.0.w),
-                            // width: MediaQuery.sizeOf(context).width * .15.w,
                             child: Text(
                               playerData!.player!.webName!,
                               overflow: TextOverflow.ellipsis,
@@ -90,10 +90,10 @@ class AiTeamPlayerCard extends StatelessWidget {
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsets.symmetric(horizontal: 2.0.w),
+                                    EdgeInsets.symmetric(horizontal: 4.0.w),
                                 child: Text(
                                   '${playerData!.player!.team!.shortName!} (H)',
-                                  style: AppTheme.textTheme.bodyLarge?.copyWith(
+                                  style: AppTheme.textTheme.bodySmall?.copyWith(
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.paragraphLighter,
                                   ),
@@ -104,7 +104,7 @@ class AiTeamPlayerCard extends StatelessWidget {
                                     EdgeInsets.symmetric(horizontal: 2.0.w),
                                 child: Text(
                                   '${playerData!.player!.nowCost}m',
-                                  style: AppTheme.textTheme.bodyLarge?.copyWith(
+                                  style: AppTheme.textTheme.bodySmall?.copyWith(
                                     fontWeight: FontWeight.w500,
                                     color: AppColors.paragraphLighter,
                                   ),
@@ -125,7 +125,7 @@ class AiTeamPlayerCard extends StatelessWidget {
                           ),
                           child: Text(
                             '${playerData!.player!.playerPredictions!.first.predictedPoints!.toStringAsFixed(0)} pts',
-                            style: AppTheme.textTheme.bodyLarge?.copyWith(
+                            style: AppTheme.textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColors.appBlack,
                             ),
@@ -135,7 +135,7 @@ class AiTeamPlayerCard extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 2.0.w),
                           child: Text(
                             'Vs ${cubit.getVsTeam(playerData!.player!, playerData!.player!.playerPredictions!.first)}',
-                            style: AppTheme.textTheme.bodyLarge?.copyWith(
+                            style: AppTheme.textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w600,
                               color: AppColors.paragraph,
                             ),
@@ -170,6 +170,52 @@ class AiTeamPlayerCard extends StatelessWidget {
                 ),
               ),
             ),
+            if (playerData!.isCaptain!)
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  height: 23.h,
+                  width: 23.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(30.r),
+                    border: Border.all(
+                      color: AppColors.grey,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'C',
+                      style: AppTheme.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            if (playerData!.isViceCaptain!)
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  height: 23.h,
+                  width: 23.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(30.r),
+                    border: Border.all(
+                      color: AppColors.grey,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'VC',
+                      style: AppTheme.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

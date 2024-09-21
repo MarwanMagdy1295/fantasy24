@@ -9,6 +9,8 @@ import 'package:next_match/src/modules/predicted_points/presentation/components/
 import 'package:next_match/src/modules/predicted_points/presentation/controller/cubit/point_prediction_cubit.dart';
 import 'package:next_match/widget/bottom_sheet.dart';
 import 'package:next_match/widget/custom_button.dart';
+import 'package:next_match/src/core/utils/assets/translations/keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 Future<dynamic> filterCustomBottomSheet(
     BuildContext context, PointPredictionCubit cubit) {
@@ -20,7 +22,7 @@ Future<dynamic> filterCustomBottomSheet(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'FILTERS',
+            point_prediction_screen.filters.tr(),
             style: AppTheme.textTheme.displayLarge?.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w700,
@@ -28,7 +30,7 @@ Future<dynamic> filterCustomBottomSheet(
           ),
           Constatnts.height40,
           Text(
-            'Price range',
+            point_prediction_screen.price_range.tr(),
             style: AppTheme.textTheme.titleLarge,
           ),
           Constatnts.height10,
@@ -38,7 +40,7 @@ Future<dynamic> filterCustomBottomSheet(
           ),
           Constatnts.height30,
           Text(
-            'Game-week range',
+            point_prediction_screen.game_week_range.tr(),
             style: AppTheme.textTheme.titleLarge,
           ),
           Constatnts.height10,
@@ -48,7 +50,7 @@ Future<dynamic> filterCustomBottomSheet(
           ),
           Constatnts.height30,
           Text(
-            'Sort by',
+            point_prediction_screen.sort_by.tr(),
             style: AppTheme.textTheme.titleLarge,
           ),
           Constatnts.height10,
@@ -110,7 +112,7 @@ Future<dynamic> filterCustomBottomSheet(
           ),
           Constatnts.height30,
           Text(
-            'Player position',
+            point_prediction_screen.player_position.tr(),
             style: AppTheme.textTheme.titleLarge,
           ),
           PlayerTypeWidget(
@@ -121,7 +123,7 @@ Future<dynamic> filterCustomBottomSheet(
             onTap: () async {
               await cubit.getPointPredictionList(pageNumber: 1);
             },
-            title: 'Done',
+            title: point_prediction_screen.done.tr(),
             titleStyle: AppTheme.textTheme.displayMedium?.copyWith(
               color: AppColors.white,
               fontSize: 16.0.sp,

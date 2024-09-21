@@ -26,6 +26,9 @@ import 'package:next_match/src/modules/auth/signup/data/data_source/signup_scree
 import 'package:next_match/src/modules/auth/signup/data/repositories/signup_screen_repository.dart';
 import 'package:next_match/src/modules/auth/signup/presentation/controller/cubit/signup_screen_cubit.dart';
 import 'package:next_match/src/modules/choose_lang/presentation/controller/cubit/cubit.dart';
+import 'package:next_match/src/modules/home/data/data_source/home_screen_remote_data_source.dart';
+import 'package:next_match/src/modules/home/data/repositories/home_screen_repository.dart';
+import 'package:next_match/src/modules/home/presentation/controller/cubit/home_screen_cubit.dart';
 import 'package:next_match/src/modules/my_team_screen/data/data_source/my_team_screen_remote_data_source.dart';
 import 'package:next_match/src/modules/my_team_screen/data/repositories/my_teams_screen_repository.dart';
 import 'package:next_match/src/modules/my_team_screen/presentation/controller/cubit/my_team_cubit.dart';
@@ -164,6 +167,22 @@ class DiService {
     di.registerLazySingleton(
       () => ResetPasswordScreenCubit(
         resetPasswordScreenRepository: di(),
+      ),
+    );
+    // HomeScreen
+    di.registerLazySingleton(
+      () => HomeScreenRemoteDataSource(
+        networkService: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => HomeScreenRepository(
+        homeScreenRemoteDataSource: di(),
+      ),
+    );
+    di.registerLazySingleton(
+      () => HomeScreenCubit(
+        homeScreenRepository: di(),
       ),
     );
 

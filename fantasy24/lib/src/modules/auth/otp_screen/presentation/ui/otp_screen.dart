@@ -97,17 +97,8 @@ class OtpScreen extends StatelessWidget {
                             length: 5,
                             obscureText: false,
                             animationType: AnimationType.slide,
-                            onCompleted: (v) {
-                              cubit.isButtonDisabled(context);
-                            },
-                            onEditingComplete: () {
-                              cubit.isButtonDisabled(context);
-                            },
-                            onSubmitted: (v) {
-                              cubit.isButtonDisabled(context);
-                            },
-                            onSaved: (v) {
-                              cubit.isButtonDisabled(context);
+                            onChanged: (String value) {
+                              cubit.isButtonDisabled(context, value);
                             },
                             enableActiveFill: true,
                             textStyle: AppTheme.textTheme.displayLarge,
@@ -128,42 +119,46 @@ class OtpScreen extends StatelessWidget {
                               shape: PinCodeFieldShape.box,
                             ),
                             appContext: context,
-                            onChanged: (String value) {
-                              cubit.isButtonDisabled(context);
-                            },
                           ),
                         ),
                         Constatnts.height40,
                         Constatnts.height8,
                         cubit.isLoading
                             ? const LoadingWidget()
-                            : customButton(
-                                onTap: cubit.isDisabled
-                                    ? null
-                                    : () {
-                                        cubit.postFBLData(context);
-                                      },
-                                title: otp_screen.verify.tr(),
-                                titleStyle:
-                                    AppTheme.textTheme.displayMedium?.copyWith(
-                                  color: AppColors.white,
-                                  fontSize: 14.0.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0.r),
-                                ),
-                                boxShadow: [
-                                  const BoxShadow(
-                                    color: AppColors.shadow,
-                                    blurRadius: 0.0,
-                                    spreadRadius: 0.0,
-                                    offset: Offset(0, 4),
-                                  ),
-                                ],
-                                backgroundColor: AppColors.primary,
-                                disabledBackgroundColor: AppColors.lightPrimary,
-                                padding: const EdgeInsets.all(14.0),
+                            : ValueListenableBuilder<TextEditingValue>(
+                                valueListenable: cubit.controller,
+                                builder: (context, value, child) {
+                                  return customButton(
+                                    onTap: value.text.length != 5
+                                        ? null
+                                        : () {
+                                            cubit.postFBLData(context);
+                                          },
+                                    title: otp_screen.verify.tr(),
+                                    titleStyle: AppTheme.textTheme.displayMedium
+                                        ?.copyWith(
+                                      color: AppColors.white,
+                                      fontSize: 14.0.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(8.0.r),
+                                    ),
+                                    boxShadow: [
+                                      const BoxShadow(
+                                        color: AppColors.shadow,
+                                        blurRadius: 0.0,
+                                        spreadRadius: 0.0,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                    backgroundColor: AppColors.primary,
+                                    disabledBackgroundColor:
+                                        AppColors.lightPrimary,
+                                    padding: const EdgeInsets.all(14.0),
+                                  );
+                                },
                               ),
                       ],
                     ),

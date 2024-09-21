@@ -51,7 +51,7 @@ class PremiereLeagueIdScreenCubit extends BaseCubit<PremiereLeagueIdScreenState>
                 myTeamModel: res,
               ),
             ),
-            (route) => false);
+            (_) => false);
       }).catchError((onError) {
         isLoading = false;
         emit(PremiereLeagueIdScreenLoading());

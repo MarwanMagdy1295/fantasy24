@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_match/src/app/di_service.dart';
 import 'package:next_match/src/core/services/prefs_service.dart';
 import 'package:next_match/src/core/utils/assets/assets.gen.dart';
-import 'package:next_match/src/modules/auth/login/presentation/ui/login_screen.dart';
+import 'package:next_match/src/modules/auth/on_boarding_screen/presentation/ui/on_boarding_screen.dart';
 import 'package:next_match/src/modules/main_screen/presentation/ui/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context,
             MaterialPageRoute(
                 builder: (context) => di<PrefsService>().user.get() == null
-                    ? const LoginScreen()
+                    ? const OnBoardingScreen()
                     : const MainScreen()),
             (route) => false);
         super.initState();

@@ -46,11 +46,12 @@ class LoginScreenCubit extends BaseCubit<LoginScreenState>
         di<PrefsService>().user.put(res!.data!.accessToken!);
         isLoading = false;
         emit(LoginScreenLoadingState());
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
             builder: (context) => const MainScreen(),
           ),
+          (_) => false,
         );
       }).catchError((onError) {
         isLoading = false;

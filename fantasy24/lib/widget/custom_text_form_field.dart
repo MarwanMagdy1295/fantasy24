@@ -77,6 +77,7 @@ Column customTextFeild({
           border: border,
           focusedBorder: border,
           errorBorder: errorBorder,
+          errorMaxLines: 2,
           contentPadding: padding,
           filled: isFill,
           fillColor: color,

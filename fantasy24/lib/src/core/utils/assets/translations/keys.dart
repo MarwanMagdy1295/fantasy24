@@ -5,6 +5,14 @@ class general {
   static const String app_name = "general.app_name";
 }
 
+class on_boarding_screens {
+  static const String on_boarding_screens_title = "on_boarding_screens.on_boarding_screens_title";
+  static const String on_boarding_screens_sub_title = "on_boarding_screens.on_boarding_screens_sub_title";
+  static const String change_langyage = "on_boarding_screens.change_langyage";
+  static const String create_a_free_account = "on_boarding_screens.create_a_free_account";
+  static const String signin = "on_boarding_screens.signin";
+}
+
 class signup_screen {
   static const String signup = "signup_screen.signup";
   static const String signup_title = "signup_screen.signup_title";
@@ -117,6 +125,12 @@ class my_team_screen {
 
 class point_prediction_screen {
   static const String point_prediction_screen_title = "point_prediction_screen.point_prediction_screen_title";
+  static const String filters = "point_prediction_screen.filters";
+  static const String price_range = "point_prediction_screen.price_range";
+  static const String game_week_range = "point_prediction_screen.game_week_range";
+  static const String sort_by = "point_prediction_screen.sort_by";
+  static const String player_position = "point_prediction_screen.player_position";
+  static const String done = "point_prediction_screen.done";
 }
 
 class ai_team_screen {
@@ -135,5 +149,10 @@ class bottom_sheet {
   static const String gw = "bottom_sheet.gw";
   static const String next_game_diff = "bottom_sheet.next_game_diff";
   static const String points = "bottom_sheet.points";
+  static const String owner_ship = "bottom_sheet.owner_ship";
+  static const String clean_sheets = "bottom_sheet.clean_sheets";
+  static const String goals = "bottom_sheet.goals";
+  static const String assists = "bottom_sheet.assists";
+  static const String form = "bottom_sheet.form";
 }
 
